@@ -3,13 +3,14 @@ import {
   createRouter,
   type RouteRecordRaw,
   type RouteComponent,
-  createMemoryHistory
+  createMemoryHistory,
+  createWebHistory
 } from "vue-router";
 
 import { routes } from "./path";
 
 export const router: Router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes
 });
 
