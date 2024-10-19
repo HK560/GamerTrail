@@ -4,7 +4,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
+    <!-- <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://vuejs.orgds/" target="_blank">
@@ -12,7 +12,8 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld :msg="$t('message.hello')" />
-  <div class="w-32 h-32 bg-blue-500">
+  <div class="w-32 h-32 bg-blue-500"> -->
+    <RouterView />
   </div>
 </template>
 

@@ -1,4 +1,11 @@
 {
+
+  "compilerOptions": {
+    "baseUrl": ".",  // 指向项目根目录
+    "paths": {
+      "@/*": ["src/*"]  // 将 @ 指向 src 目录
+    }
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
