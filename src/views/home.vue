@@ -1,8 +1,4 @@
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 <template>
-    <div>
-        你好
-    </div>
+  <div>你好</div>
 </template>

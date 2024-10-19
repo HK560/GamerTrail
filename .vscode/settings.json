@@ -16,5 +16,13 @@
         "eslint.autoFixOnSave": "explicit",
         
     },
-    "editor.formatOnSave": true
+    // "editor.formatOnSave": true,
+    "eslint.alwaysShowStatus": true, // 始终显示 ESLint 状态
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "vue" // 如果你使用 Vue
+    ]
 }

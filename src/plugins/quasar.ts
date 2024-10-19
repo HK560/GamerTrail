@@ -1,5 +1,3 @@
-import { Quasar } from "quasar";
-
 // Import icon libraries
 import "@quasar/extras/material-icons/material-icons.css";
 import "@quasar/extras/material-icons-outlined/material-icons-outlined.css";

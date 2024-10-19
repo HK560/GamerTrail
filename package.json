@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
-    "lint": "eslint --ext .js --ext .jsx --ext .vue src/"
+    "lint": "eslint src/"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.12",
@@ -27,6 +27,7 @@
     "@quasar/vite-plugin": "^1.7.0",
     "@vitejs/plugin-vue": "^5.1.4",
     "eslint": "^9.12.0",
+    "eslint-define-config": "^2.1.0",
     "eslint-plugin-vue": "^9.29.0",
     "globals": "^15.11.0",
     "sass": "^1.33.0",

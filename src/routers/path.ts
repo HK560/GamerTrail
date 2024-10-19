@@ -1,4 +1,4 @@
-import { type RouteRecordRaw } from "vue-router";
+import type { RouteRecordRaw } from "vue-router";
 
 const HomeView_component = () => import("@/views/home.vue");
 const Test_component = () => import("@/views/test/test.vue");
