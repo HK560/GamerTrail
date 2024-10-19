@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.box-center{
+    @apply justify-center flex flex-col
+}
