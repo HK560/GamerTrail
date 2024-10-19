@@ -1,6 +1,6 @@
 import { type RouteRecordRaw } from "vue-router";
 
-const HomeView_component = () => import("@/views/home/index.vue");
+const HomeView_component = () => import("@/views/home.vue");
 const Test_component = () => import("@/views/test/test.vue");
 export const routes: RouteRecordRaw[] = [
   { path: "/", name: "Home", component: HomeView_component },
