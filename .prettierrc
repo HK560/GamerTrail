@@ -4,6 +4,5 @@
   "semi": true,
   "endOfLine": "auto",
   "trailingComma": "none",
-  "singleAttributePerLine": true,
   "useTabs": false
 }

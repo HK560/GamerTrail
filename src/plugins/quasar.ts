@@ -18,6 +18,7 @@ export const quasarConfig = {
   plugins: { Loading, LoadingBar, Notify }, // import Quasar plugins and add here
   lang: localStorage.getItem("lang") === "zh" ? zh : en,
   config: {
+    dark: true,
     loading: {},
     loadingBar: {},
     notify: {}
