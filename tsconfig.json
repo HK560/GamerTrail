@@ -1,9 +1,8 @@
 {
-
   "compilerOptions": {
-    "baseUrl": ".",  // 指向项目根目录
+    "baseUrl": ".", // 指向项目根目录
     "paths": {
-      "@/*": ["src/*"]  // 将 @ 指向 src 目录
+      "@/*": ["src/*"] // 将 @ 指向 src 目录
     }
   },
   "files": [],
