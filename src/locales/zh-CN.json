@@ -1,5 +1,10 @@
 {
   "message": {
     "hello": "你好"
+  },
+  "title": {
+    "mainPlatform": "主要平台",
+    "totalPlayTime": "总游玩时长",
+    "totalPlayed": "总游玩数"
   }
 }

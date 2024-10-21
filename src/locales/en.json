@@ -1,5 +1,10 @@
 {
   "message": {
     "hello": "Hello!"
+  },
+  "title": {
+    "mainPlatform": "Main Platform",
+    "totalPlayTime": "Total Played Time",
+    "totalPlayed": "Total Played"
   }
 }
