@@ -44,6 +44,7 @@ const pageSwitch = ref(false);
 .home-box {
   @apply w-full h-full relative flex flex-col items-center gap-[20px] justify-center;
   @apply overflow-hidden;
+  @apply lg:min-w-[1500px] lg:min-h-[720px];
 }
 
 .info-box {
