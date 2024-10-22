@@ -33,5 +33,8 @@
   },
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "files.associations": {
+    "*.css": "postcss"
   }
 }

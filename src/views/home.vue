@@ -6,7 +6,8 @@ import bgImg from "@/assets/img/Avg_avg_ac9_8.jpg";
 import { ref } from "vue";
 import "@quasar/extras/animate/fadeIn.css";
 import "@quasar/extras/animate/fadeOut.css";
-import "animate.css";
+// import "animate.css";
+import GamesListBox from "@/components/GamesList/GamesListBox.vue";
 
 const pageSwitch = ref(false);
 </script>
@@ -23,8 +24,7 @@ const pageSwitch = ref(false);
       </div>
 
       <div id="game-list-box" v-else-if="pageSwitch === true" class="info-box">
-        <GamerInfoBox />
-        123
+        <GamesListBox />
       </div>
     </Transition>
     <q-btn
