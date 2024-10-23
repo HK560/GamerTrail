@@ -74,3 +74,16 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+img {
+  will-change: transform;
+  image-rendering: crisp-edges; /* 使用抗锯齿 */
+  outline: 1px solid transparent; /* 添加透明边框 */
+  will-change: transform; /* 提示浏览器优化 */
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard) */
+  image-rendering: crisp-edges; /* The standard */
+  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard) */
+  transform: scale(1);
+}

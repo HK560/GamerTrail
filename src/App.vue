@@ -1,16 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import "@/styles/style.css";
+</script>
 
 <template>
   <div class="w-dvw h-dvh">
-    <!-- <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.orgds/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld :msg="$t('message.hello')" />
-  <div class="w-32 h-32 bg-blue-500"> -->
     <RouterView />
   </div>
 </template>

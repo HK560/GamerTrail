@@ -23,7 +23,11 @@ const pageSwitch = ref(false);
         <GamerInfoBox />
       </div>
 
-      <div id="game-list-box" v-else-if="pageSwitch === true" class="info-box">
+      <div
+        id="game-list-box"
+        v-else-if="pageSwitch === true"
+        class="info-box !w-[80%]"
+      >
         <GamesListBox />
       </div>
     </Transition>
@@ -48,6 +52,6 @@ const pageSwitch = ref(false);
 }
 
 .info-box {
-  @apply absolute flex flex-col items-center w-[60%] lg:w-[1440px] my-5 min-h-[calc(100vh-20vh)];
+  @apply absolute flex flex-col items-center h-[80vh] w-[60%] lg:w-[1440px] my-5 min-h-[calc(100vh-20vh)];
 }
 </style>
