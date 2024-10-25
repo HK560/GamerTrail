@@ -3,7 +3,7 @@ import bgImg from "@/assets/img/gameTest.jpg";
 </script>
 <template>
   <div
-    class="grow object-cover max-h-full max-w-full aspect-[3/4] h-full overflow-hidden flex items-center justify-center rounded-md shadow-2xl relative"
+    class="hover:scale-110 duration-200 grow object-cover max-h-full max-w-full aspect-[3/4] h-full overflow-hidden flex items-center justify-center rounded-md shadow-2xl relative"
   >
     <q-img
       loading="lazy"

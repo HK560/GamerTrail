@@ -6,13 +6,13 @@ const boxRoot = ref(null);
 <template>
   <div ref="boxRoot" class="w-full h-full max-w-full">
     <div
-      class="list-box px-4 overflow-y-scroll overflow-x-hidden custom-scrollbar"
+      class="list-box py-4 overflow-y-scroll overflow-x-hidden custom-scrollbar"
     >
       <q-intersection
         v-for="i in 60"
         :key="i"
         transition="scale"
-        class="h-[23vh] aspect-[3/4]"
+        class="h-[23vh] aspect-[3/4] lg:h-[30vh]"
         :root="boxRoot"
       >
         <GameCard class=""></GameCard>
