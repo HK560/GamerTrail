@@ -1,7 +1,16 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import GameCard from "./GameCard.vue";
+import { getGameData, ListGameCardConfig } from "./types";
 const boxRoot = ref(null);
+
+const gameAllData = getGameData();
+const showConfig: ListGameCardConfig = {
+  showScore: true,
+  showPlayedTime: true,
+  showFavorite: true,
+  showState: true
+};
 </script>
 <template>
   <div ref="boxRoot" class="w-full h-full max-w-full">
@@ -9,13 +18,13 @@ const boxRoot = ref(null);
       class="list-box py-4 overflow-y-scroll overflow-x-hidden custom-scrollbar"
     >
       <q-intersection
-        v-for="i in 60"
-        :key="i"
+        v-for="game in gameAllData"
+        :key="game.id"
         transition="scale"
-        class="h-[23vh] aspect-[3/4] lg:h-[30vh]"
+        class="h-[23vh] aspect-[3/4] lg:h-[30vh] max-h-full max-w-full"
         :root="boxRoot"
       >
-        <GameCard class=""></GameCard>
+        <GameCard :gameData="game" :showConfig="showConfig"></GameCard>
       </q-intersection>
     </div>
   </div>

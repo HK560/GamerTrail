@@ -1,0 +1,84 @@
+[
+  {
+    "id": 1,
+    "name": "超级马里奥",
+    "description": "经典平台跳跃游戏",
+    "playedTime": 120,
+    "imgUrl": "https://example.com/mario.jpg",
+    "isFavorite": true,
+    "isPlaying": false,
+    "isFinished": true,
+    "score": 95
+  },
+  {
+    "id": 2,
+    "name": "塞尔达传说",
+    "description": "开放世界冒险游戏",
+    "playedTime": 300,
+    "startTime": 1672531200,
+    "isPlaying": true,
+    "isPaused": false
+  },
+  {
+    "id": 3,
+    "name": "俄罗斯方块",
+    "playedTime": 60,
+    "isFinished": true,
+    "score": 1000
+  },
+  {
+    "id": 4,
+    "name": "我的世界",
+    "description": "沙盒建造游戏",
+    "imgUrl": "https://example.com/minecraft.jpg",
+    "isFavorite": false,
+    "isPlaying": true,
+    "isPaused": true
+  },
+  {
+    "id": 5,
+    "name": "精灵宝可梦",
+    "playedTime": 480,
+    "isFavorite": true,
+    "isFinished": true,
+    "score": 150
+  },
+  {
+    "id": 6,
+    "name": "最终幻想",
+    "description": "角色扮演游戏",
+    "startTime": 1672617600,
+    "isPlaying": false
+  },
+  {
+    "id": 7,
+    "name": "街头霸王",
+    "playedTime": 30,
+    "imgUrl": "https://example.com/streetfighter.jpg",
+    "isFinished": true,
+    "score": 500
+  },
+  {
+    "id": 8,
+    "name": "魔兽世界",
+    "description": "大型多人在线角色扮演游戏",
+    "playedTime": 1200,
+    "isFavorite": true,
+    "isPlaying": true
+  },
+  {
+    "id": 9,
+    "name": "吃豆人",
+    "playedTime": 15,
+    "isFinished": true,
+    "score": 200
+  },
+  {
+    "id": 10,
+    "name": "古墓丽影",
+    "description": "动作冒险游戏",
+    "imgUrl": "https://example.com/tombraider.jpg",
+    "isPlaying": false,
+    "isPaused": false
+  }
+]
