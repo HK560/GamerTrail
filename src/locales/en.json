@@ -3,6 +3,7 @@
     "hello": "Hello!"
   },
   "title": {
+    "gameFinished": "Completed Games",
     "mainPlatform": "Main Platform",
     "totalPlayTime": "Total Played Time",
     "totalPlayed": "Total Played"

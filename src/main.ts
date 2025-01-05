@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import "@/styles/tailwind.css";
+import "@/styles/style.css";
 import router from "./routers";
 // plugins
 import { i18n } from "./plugins/i18n";

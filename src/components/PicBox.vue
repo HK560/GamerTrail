@@ -4,7 +4,10 @@
       v-model="slide"
       animated
       infinite
-      :autoplay="3000"
+      navigation
+      :fullscreen="false"
+      :swipeable="true"
+      :autoplay="300000"
       transition-prev="slide-right"
       transition-next="slide-left"
       class="rounded-lg shadow-lg"
@@ -13,14 +16,16 @@
         v-for="(image, index) in images"
         :key="index"
         :name="index"
-        class="relative"
+        class="w-full h-full"
       >
         <img
           :src="image.url"
           :alt="image.title"
           class="w-full h-full object-cover"
         />
-        <div class="absolute bottom-0 left-0 right-0 bg-black/50 p-4">
+        <div
+          class="absolute bottom-0 left-0 right-0 bg-black/50 p-4 opacity-0 hover:opacity-100 transition-opacity duration-300"
+        >
           <h3 class="text-white text-lg font-bold">{{ image.title }}</h3>
           <p class="text-gray-300 text-sm">{{ image.description }}</p>
         </div>

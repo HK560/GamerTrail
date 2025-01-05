@@ -75,6 +75,15 @@ button:focus-visible {
   }
 } */
 
+.q-carousel__slide,
+.q-carousel .q-carousel--padding {
+  padding: 0px !important;
+}
+
+.q-dark {
+  background:;
+}
+
 img {
   will-change: transform;
   image-rendering: crisp-edges; /* 使用抗锯齿 */
@@ -86,4 +95,13 @@ img {
   image-rendering: crisp-edges; /* The standard */
   -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard) */
   transform: scale(1);
+}
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+* {
+  -ms-overflow-style: none; /* IE Edge */
+  scrollbar-width: none; /* Firefox */
 }

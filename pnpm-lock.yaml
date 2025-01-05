@@ -41,6 +41,9 @@ importers:
       vue:
         specifier: ^3.5.10
         version: 3.5.12(typescript@5.6.3)
+      vue-device-detect:
+        specifier: ^1.0.3
+        version: 1.0.3(vue@3.5.12(typescript@5.6.3))
       vue-i18n:
         specifier: '10'
         version: 10.0.4(vue@3.5.12(typescript@5.6.3))
@@ -1794,6 +1797,10 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  ua-parser-js@1.0.40:
+    resolution: {integrity: sha512-z6PJ8Lml+v3ichVojCiB8toQJBuwR42ySM4ezjXIqXK3M0HczmKQ3LF4rhU55PfD99KEEXQG6yb7iOMyvYuHew==}
+    hasBin: true
+
   update-browserslist-db@1.1.1:
     resolution: {integrity: sha512-R8UzCaa9Az+38REPiJ1tXlImTJXlVfgHZsglwBD/k6nj76ctsH1E3q4doGrukiLQd3sGQYu56r5+lo5r94l29A==}
     hasBin: true
@@ -1842,6 +1849,11 @@ packages:
 
   vscode-uri@3.0.8:
     resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
+
+  vue-device-detect@1.0.3:
+    resolution: {integrity: sha512-3DzdW88bHReUS9hUaqXvUXFmpa9QsZ0Dmo8EjvteBU1OoaDP9jwEj+LvCXjYSzGBC1fEylTHoOXwvqj4jwBHOQ==}
+    peerDependencies:
+      vue: ^3.2.32
 
   vue-eslint-parser@9.4.3:
     resolution: {integrity: sha512-2rYRLWlIpaiN8xbPiDyXZXRgLGOtWxERV7ND5fFAv5qo1D2N9Fu9MNajBNc6o13lZ+24DAWCkQCvj4klgmcITg==}
@@ -3632,6 +3644,8 @@ snapshots:
 
   typescript@5.6.3: {}
 
+  ua-parser-js@1.0.40: {}
+
   update-browserslist-db@1.1.1(browserslist@4.24.0):
     dependencies:
       browserslist: 4.24.0
@@ -3660,6 +3674,11 @@ snapshots:
       sass: 1.76.0
 
   vscode-uri@3.0.8: {}
+
+  vue-device-detect@1.0.3(vue@3.5.12(typescript@5.6.3)):
+    dependencies:
+      ua-parser-js: 1.0.40
+      vue: 3.5.12(typescript@5.6.3)
 
   vue-eslint-parser@9.4.3(eslint@8.57.1):
     dependencies:

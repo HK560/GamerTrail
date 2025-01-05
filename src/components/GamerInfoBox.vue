@@ -49,6 +49,11 @@ const statusList = computed(() => [
     icon: "devices",
     label: t("title.mainPlatform"),
     value: "PC"
+  },
+  {
+    icon: "mdi-check-outline",
+    label: t("title.gameFinished"),
+    value: "PC"
   }
 ]);
 
@@ -98,7 +103,7 @@ onUnmounted(() => {
           >
             {{ playerData?.nickname?.[currentIndex] }}
           </div>
-          <q-scroll-area class="mt-2 h-10 lg:h-20">
+          <q-scroll-area class="mt-2 h-5 lg:h-20">
             <p
               class="text-[0.8rem] text-gray-300 text-nowrap whitespace-pre-wrap lg:text-left cursor-pointer"
               @click="
@@ -117,7 +122,9 @@ onUnmounted(() => {
         <div v-for="item in statusList" class="m-child">
           <q-icon :name="item.icon" size="3rem" class="text-gray-300"></q-icon>
           <div class="flex flex-col flex-nowrap text-left">
-            <span class="ml-3 text-[1rem] text-gray-300">{{ item.label }}</span>
+            <span class="ml-3 text-[0.7rem] text-gray-300">{{
+              item.label
+            }}</span>
             <span class="ml-3 text-[1.5rem]">{{ item.value }}</span>
           </div>
         </div>
@@ -145,11 +152,11 @@ onUnmounted(() => {
 }
 
 .m-gamer-base-status {
-  @apply flex flex-col flex-nowrap  overflow-hidden items-start;
+  @apply grid grid-cols-2 gap-4  overflow-hidden items-start;
   @apply lg:flex-row;
   .m-child {
-    @apply flex flex-row flex-nowrap items-center justify-center;
-    @apply mb-5 last:mb-0;
+    @apply flex flex-row flex-nowrap items-center justify-center mx-auto my-auto;
+
     @apply lg:mb-0 lg:mr-5 lg:last:mr-0 lg:translate-x-0;
   }
 }

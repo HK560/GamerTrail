@@ -3,6 +3,7 @@
     "hello": "你好"
   },
   "title": {
+    "gameFinished": "已通关游戏数",
     "mainPlatform": "主要平台",
     "totalPlayTime": "总游玩时长",
     "totalPlayed": "总游玩数"

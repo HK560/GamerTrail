@@ -1,8 +1,8 @@
 export type Platform = {
   name: string;
-  username: string;
-  avatar: string;
-  id: string;
+  accountName: string;
+  icon: string;
+  url: string;
 };
 
 export type PlayerData = {

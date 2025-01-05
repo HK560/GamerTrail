@@ -8,9 +8,35 @@
   "platforms": [
     {
       "name": "Steam",
-      "username": "Hk560",
-      "avatar": "https://i.ibb.co/0tGZc9W/2.png",
-      "id": "76561198081949834"
+      "accountName": "HK560HK560HK560HK560HK560HK560HK560HK560HK560HK560HK560HK560HK560HK560HK560",
+      "icon": "mdi-steam",
+      "url": "https://steamcommunity.com/profiles/76561198136343255/"
+    },
+    {
+      "name": "EA",
+      "accountName": "HK560",
+      "icon": "mdi-ea"
+    },
+    {
+      "name": "Xbox",
+      "accountName": "HK560",
+      "icon": "mdi-xbox"
+    },
+    {
+      "name": "Ste1am",
+      "accountName": "HK560",
+      "icon": "mdi-steam",
+      "url": "https://steamcommunity.com/profiles/76561198136343255/"
+    },
+    {
+      "name": "E2A",
+      "accountName": "HK560",
+      "icon": "mdi-ea"
+    },
+    {
+      "name": "Xb3ox",
+      "accountName": "HK560",
+      "icon": "mdi-xbox"
     }
   ]
 }

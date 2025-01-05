@@ -49,3 +49,12 @@
     }
   }
 }
+@layer base {
+  :root {
+    --color-primary: 59 130 246;
+    --color-secondary: 99 102 241;
+    --color-success: 16 185 129;
+    --color-warning: 245 158 11;
+    --color-danger: 239 68 68;
+  }
+}
