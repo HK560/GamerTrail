@@ -1,0 +1,19 @@
+{
+  "images": [
+    {
+      "url": "/images/gamer/avatar_hk560.jpg",
+      "title": "Game 1",
+      "description": "Description for game 1"
+    },
+    {
+      "url": "/images/89579007_p0.jpg",
+      "title": "Game 2",
+      "description": "Description for game 2"
+    },
+    {
+      "url": "/images/Avg_avg_ac9_8.jpg",
+      "title": "Game 3",
+      "description": "Description for game 3"
+    }
+  ]
+}

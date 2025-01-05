@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import bgImg from "@/assets/img/gameTest.jpg";
-import { type GameData } from "./types";
-import { type ListGameCardConfig } from "./types";
+import { type GameData } from "../../configs/types";
+import { type ListGameCardConfig } from "../../configs/types";
 import { computed } from "vue";
 const props = defineProps<{
   gameData: GameData;

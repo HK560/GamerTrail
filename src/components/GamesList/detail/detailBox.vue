@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import { getGameData } from "../types";
+import { getGameData } from "../../../configs/types";
 const gameData = getGameData();
 const game = ref(gameData[0]);
 </script>

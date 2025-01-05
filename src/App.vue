@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import "@/styles/style.css";
+import { ref } from "vue";
+import { getGameData, getPlayerData } from "./configs/types";
+
+const games = ref(getGameData());
+const players = ref(getPlayerData());
 </script>
 
 <template>

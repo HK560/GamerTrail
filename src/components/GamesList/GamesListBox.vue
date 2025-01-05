@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import GameCard from "./GameCard.vue";
-import { getGameData, ListGameCardConfig } from "./types";
+import { G_gameData, ListGameCardConfig } from "../../configs/types";
 const boxRoot = ref(null);
 
-const gameAllData = getGameData();
+const gameAllData = G_gameData;
 const showConfig: ListGameCardConfig = {
   showScore: true,
   showPlayedTime: true,

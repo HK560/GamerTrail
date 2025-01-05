@@ -1,20 +1,49 @@
 <script lang="ts" setup>
-import avatar from "@/assets/img/avatar_hk560.jpg";
-import { ref } from "vue";
-import { t } from "@/plugins/i18n";
-const desc = ref("与光同尘");
-const avatar_src = ref("images/gamer/avatar_hk560.jpg");
+import { ref, onMounted, onUnmounted, computed, watchEffect } from "vue";
+import { t } from "../plugins/i18n";
+import {
+  getTotalPlayedTime,
+  gettotalPlayed,
+  getPlayerData
+} from "../configs/types";
 
-const statusList = ref([
+// 当前显示索引
+const currentIndex = ref(0);
+// 轮换间隔时间
+const intervalTime = 5000;
+let intervalId: number | null = null;
+
+// 玩家数据
+const playerData = ref<ReturnType<typeof getPlayerData>>(null);
+const isLoading = ref(true);
+
+// 启动轮换
+const startRotation = () => {
+  intervalId = setInterval(() => {
+    currentIndex.value =
+      (currentIndex.value + 1) % (playerData.value?.avatar?.length || 1);
+  }, intervalTime);
+};
+
+// 停止轮换
+const stopRotation = () => {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+};
+
+// 状态列表
+const statusList = computed(() => [
   {
     icon: "mdi-gamepad-variant-outline",
     label: t("title.totalPlayed"),
-    value: "256"
+    value: gettotalPlayed()
   },
   {
     icon: "schedule",
     label: t("title.totalPlayTime"),
-    value: "8000h"
+    value: `${getTotalPlayedTime()}H`
   },
   {
     icon: "devices",
@@ -22,9 +51,25 @@ const statusList = ref([
     value: "PC"
   }
 ]);
+
+// 使用 watchEffect 监听数据变化
+watchEffect(() => {
+  const data = getPlayerData();
+  if (data) {
+    playerData.value = data;
+    startRotation();
+    isLoading.value = false;
+  }
+});
+
+onUnmounted(() => {
+  stopRotation();
+});
 </script>
+
 <template>
   <div
+    v-if="!isLoading"
     class="w-full flex flex-col lg:flex-row no-wrap lg:!gap-4 justify-center items-center"
   >
     <div class="m-panel lg:!w-[30%]">
@@ -32,26 +77,38 @@ const statusList = ref([
         class="flex flex-col lg:flex-row !flex-nowrap mx-[2%] justify-center items-center lg:justify-normal w-full"
       >
         <div id="avatar" class="hover:scale-[110%] duration-100 cursor-default">
-          <q-avatar size="128px" class="shadow-lg">
-            <q-img :src="avatar_src" />
+          <q-avatar
+            size="128px"
+            class="shadow-lg cursor-pointer"
+            @click="
+              currentIndex =
+                (currentIndex + 1) % (playerData?.avatar?.length || 1)
+            "
+          >
+            <q-img :src="playerData?.avatar?.[currentIndex]" />
           </q-avatar>
         </div>
         <div id="name-and-description" class="m-desc-box">
-          <div class="text-2xl font-bold">HK560</div>
+          <div
+            class="text-2xl font-bold cursor-pointer"
+            @click="
+              currentIndex =
+                (currentIndex + 1) % (playerData?.nickname?.length || 1)
+            "
+          >
+            {{ playerData?.nickname?.[currentIndex] }}
+          </div>
           <q-scroll-area class="mt-2 h-10 lg:h-20">
             <p
-              class="text-[0.8rem] text-gray-300 text-nowrap whitespace-pre-wrap lg:text-left"
+              class="text-[0.8rem] text-gray-300 text-nowrap whitespace-pre-wrap lg:text-left cursor-pointer"
+              @click="
+                currentIndex =
+                  (currentIndex + 1) % (playerData?.bio?.length || 1)
+              "
             >
-              {{ desc }}
+              {{ playerData?.bio?.[currentIndex] }}
             </p>
           </q-scroll-area>
-          <!-- <div class="mt-2 text-sm text-gray-300 overflow-hidden">
-            The issue "Replace
-            ⏎········"error",⏎········{·allowBitwiseExpressions:·true·}⏎······
-            with "error",·{·allowBitwiseExpressions:·true·}" is a suggestion to
-            simplify the code by removing unnecessary line breaks and
-            indentation. In the given code snippet, the line:
-          </div> -->
         </div>
       </div>
     </div>
@@ -66,6 +123,9 @@ const statusList = ref([
         </div>
       </div>
     </div>
+  </div>
+  <div v-else class="w-full flex justify-center items-center h-64">
+    <q-spinner color="primary" size="3em" />
   </div>
 </template>
 

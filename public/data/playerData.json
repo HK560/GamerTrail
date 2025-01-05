@@ -1,0 +1,16 @@
+{
+  "nickname": ["HK560", "elubadaernU"],
+  "avatar": [
+    "https://i.ibb.co/0tGZc9W/2.png",
+    "/images/gamer/avatar_hk560.jpg"
+  ],
+  "bio": ["与光同尘", "游戏爱好者", "探索未知的冒险者"],
+  "platforms": [
+    {
+      "name": "Steam",
+      "username": "Hk560",
+      "avatar": "https://i.ibb.co/0tGZc9W/2.png",
+      "id": "76561198081949834"
+    }
+  ]
+}
