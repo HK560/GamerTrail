@@ -1,3 +1,11 @@
 {
-  "recommendations": ["Vue.volar"]
+  "recommendations": [
+    "vscode-icons-team.vscode-icons",
+    "lokalise.i18n-ally",
+    "vue.volar",
+    "eamodio.gitlens",
+    "bradlc.vscode-tailwindcss",
+    "francescopastore.quasar-extension-pack",
+    "esbenp.prettier-vscode"
+  ]
 }

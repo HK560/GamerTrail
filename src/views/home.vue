@@ -20,10 +20,12 @@ const pageSwitch = ref(false);
       enter-active-class="animate__animated"
       leave-active-class="animate__animated animate__fadeOutUp"
     >
-      <div id="gamer-info-box" v-if="pageSwitch === false" class="info-box">
-        <GamerInfoBox />
-        <div class="content-box">
+      <div id="gamer-info-box" v-if="pageSwitch === false" class="main-box">
+        <div class="left-panel">
+          <GamerInfoBox class="mb-5" />
           <PlatformsBox class="platforms" />
+        </div>
+        <div class="right-panel">
           <PicShow class="pic-show" />
         </div>
       </div>
@@ -57,9 +59,16 @@ const pageSwitch = ref(false);
   @apply lg:min-w-[1500px] lg:min-h-[720px];
 }
 
-.info-box {
-  @apply absolute flex flex-col items-center h-full lg:h-[80vh]  w-[90%] lg:w-[1440px] my-5 min-h-[calc(100vh-20vh)] overflow-auto;
-  @apply py-4;
+.main-box {
+  @apply absolute flex flex-col lg:flex-row  items-center h-full lg:h-[720px]  w-[90%] lg:w-[unset] my-5 min-h-[calc(100vh-20vh)] overflow-auto;
+  @apply py-4 gap-5;
+
+  .left-panel {
+    @apply w-full lg:w-[400px] h-full max-w-[450px] lg:max-w-[unset];
+  }
+  .right-panel {
+    @apply w-full lg:w-[668px] h-full;
+  }
 }
 
 .content-box {
@@ -67,10 +76,10 @@ const pageSwitch = ref(false);
 }
 
 .platforms {
-  @apply w-full lg:w-1/2;
+  @apply w-full lg:w-[unset];
 }
 
 .pic-show {
-  @apply w-full lg:w-1/2;
+  @apply w-full h-[376px];
 }
 </style>

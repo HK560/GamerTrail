@@ -75,7 +75,7 @@ onUnmounted(() => {
 <template>
   <div
     v-if="!isLoading"
-    class="w-full flex flex-col lg:flex-row no-wrap lg:!gap-4 justify-center items-center"
+    class="w-full flex flex-col no-wrap lg:!gap-4 justify-center items-center"
   >
     <div class="m-panel lg:!w-[30%]">
       <div
@@ -138,11 +138,11 @@ onUnmounted(() => {
 
 <style lang="postcss" scoped>
 .m-panel {
-  @apply w-full bg-black/10 rounded-xl  backdrop-blur-md border border-white/20 shadow-lg p-6 py-[20px] max-w-[450px] flex items-center justify-center;
+  @apply w-full bg-black/10 rounded-xl  backdrop-blur-md border border-white/20 shadow-lg p-6 py-[20px] flex items-center justify-center;
   animation: fadeIn;
   animation-duration: 2s;
   @apply mb-5 last:mb-0;
-  @apply lg:h-[180px] lg:max-w-none lg:mb-0 lg:justify-start lg:w-[unset];
+  @apply lg:h-[180px] lg:max-w-none lg:mb-0 lg:justify-start;
   @apply first:bg-white/0 first:backdrop-blur-none first:border-none first:shadow-none;
 }
 
