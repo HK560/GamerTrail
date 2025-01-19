@@ -5,7 +5,8 @@ import {
   getTotalPlayedTime,
   gettotalPlayed,
   getPlayerData,
-  getFinishedGames
+  getFinishedGames,
+  initializeData
 } from "../configs/types";
 import "@quasar/extras/animate/fadeIn.css";
 import "@quasar/extras/animate/fadeOut.css";
@@ -74,7 +75,7 @@ const statusList = computed(() => [
   {
     icon: "devices",
     label: t("title.mainPlatform"),
-    value: "PC"
+    value: playerData.value?.platforms?.[0]?.name || "-"
   },
   {
     icon: "mdi-check-outline",
@@ -83,16 +84,18 @@ const statusList = computed(() => [
   }
 ]);
 
-// 使用 watchEffect 监听数据变化
-watchEffect(() => {
+// 修改数据加载逻辑
+onMounted(async () => {
+  isLoading.value = true;
+  await initializeData();
   const data = getPlayerData();
   if (data) {
     playerData.value = data;
     startAvatarRotation();
     startNicknameRotation();
     startBioRotation();
-    isLoading.value = false;
   }
+  isLoading.value = false;
 });
 
 onUnmounted(() => {

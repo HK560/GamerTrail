@@ -50,8 +50,7 @@ async function loadDataFile<T>(url: string): Promise<T | null> {
   }
 }
 
-// 在页面加载时立即加载数据
-(async () => {
+export async function initializeData() {
   const [gameData, playerData] = await Promise.all([
     loadDataFile<GameData[]>("/data/gameData.json"),
     loadDataFile<PlayerData>("/data/playerData.json")
@@ -63,7 +62,8 @@ async function loadDataFile<T>(url: string): Promise<T | null> {
   if (playerData) {
     G_playerData = playerData;
   }
-})();
+  return { gameData: G_gameData, playerData: G_playerData };
+}
 
 export function getGameData(): GameData[] {
   return G_gameData;
