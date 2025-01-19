@@ -113,7 +113,7 @@ const chartOption = ref<EChartsOption>({
       name: t("title.gameStarts"),
       type: "bar",
       barWidth: "50%",
-      data: [],
+      data: [] as [number, number][],
       itemStyle: {
         color: {
           type: "linear",
@@ -157,7 +157,7 @@ const chartOption = ref<EChartsOption>({
       }
     }
   ]
-});
+}) as { value: { series: { data: [number, number][] }[] } };
 
 const loadData = async () => {
   try {
@@ -212,9 +212,19 @@ const loadData = async () => {
       }, {});
 
       // 转换为图表数据格式
-      chartOption.value.series[0].data = Object.values(groupedData)
+      const chartData = Object.values(groupedData)
         .sort((a: any, b: any) => a.time - b.time)
-        .map((item: any) => [item.time, item.count]);
+        .map((item: any) => [item.time, item.count]) as [number, number][];
+
+      chartOption.value = {
+        ...chartOption.value,
+        series: [
+          {
+            ...chartOption.value.series?.[0],
+            data: chartData
+          }
+        ]
+      };
     }
   } catch (error) {
     console.error("加载游戏数据失败:", error);
