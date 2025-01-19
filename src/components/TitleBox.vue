@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-const title = ref("hello");
+import { t } from "@/plugins/i18n";
+const title = ref(t("message.hello"));
 </script>
 <template>
   <q-card class="h-[48px] justify-center flex flex-col align-middle relative">
@@ -12,7 +13,9 @@ const title = ref("hello");
         logo
       </div>
       <div class="ml-2 box-center text-h5">{{ title }}</div>
-      <div class="absolute top-[50%] translate-y-[-50%] right-5 box-center">right</div>
+      <div class="absolute top-[50%] translate-y-[-50%] right-5 box-center">
+        right
+      </div>
     </div>
   </q-card>
 </template>

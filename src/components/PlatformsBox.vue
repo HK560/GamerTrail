@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full bg-black/10 rounded-xl backdrop-blur-md border border-white/20 shadow-lg p-4"
+    class="w-full h-[300px] bg-black/10 rounded-xl backdrop-blur-md border border-white/20 shadow-lg p-4"
   >
     <div class="grid grid-cols-2 grid-flow-row gap-2">
       <div
@@ -52,6 +52,7 @@ import { computed, ref } from "vue";
 import { useQuasar } from "quasar";
 import { G_playerData } from "../configs/types";
 import { isMobile } from "vue-device-detect";
+import { t } from "@/plugins/i18n";
 
 const $q = useQuasar();
 const slide = ref(0);
@@ -85,7 +86,7 @@ function copyUsernameAndJump(username: string, url?: string | null): void {
       .writeText(username)
       .then(() => {
         $q.notify({
-          message: "用户名已复制到剪贴板",
+          message: t("message.copySuccess"),
           color: "positive",
           position: "top",
           timeout: 1000
@@ -93,7 +94,7 @@ function copyUsernameAndJump(username: string, url?: string | null): void {
       })
       .catch(() => {
         $q.notify({
-          message: "复制失败，请手动复制",
+          message: t("message.copyFail"),
           color: "negative",
           position: "top",
           timeout: 1000
@@ -101,7 +102,7 @@ function copyUsernameAndJump(username: string, url?: string | null): void {
       });
   } else {
     $q.notify({
-      message: "用户名：" + username,
+      message: t("message.username") + username,
       color: "info",
       position: "top",
       timeout: 1000
@@ -111,11 +112,11 @@ function copyUsernameAndJump(username: string, url?: string | null): void {
   // 如果有URL，弹出确认对话框
   if (url) {
     $q.notify({
-      message: "是否要跳转到该平台页面？",
+      message: t("message.jumpConfirm"),
       color: "primary",
       actions: [
         {
-          label: "跳转",
+          label: t("message.jump"),
           color: "white",
           handler: () => {
             // 用户确认后在新窗口打开
@@ -123,7 +124,7 @@ function copyUsernameAndJump(username: string, url?: string | null): void {
           }
         },
         {
-          label: "取消",
+          label: t("message.cancel"),
           color: "white",
           handler: () => {
             // 用户取消时不执行任何操作

@@ -3,13 +3,16 @@ import TitleBox from "@/components/TitleBox.vue";
 import GamerInfoBox from "@/components/GamerInfoBox.vue";
 import PicShow from "@/components/PicBox.vue";
 import PlatformsBox from "@/components/PlatformsBox.vue";
+import GameStartsChart from "@/components/GameStartsChart.vue";
 import bgImg from "@/assets/img/Avg_avg_ac9_8.jpg";
 import { ref } from "vue";
 import "@quasar/extras/animate/fadeIn.css";
 import "@quasar/extras/animate/fadeOut.css";
 import GamesListBox from "@/components/GamesList/GamesListBox.vue";
+import { t } from "@/plugins/i18n";
 
 const pageSwitch = ref(false);
+const chartPeriod = ref<"year" | "month">("year");
 </script>
 
 <template>
@@ -27,6 +30,22 @@ const pageSwitch = ref(false);
         </div>
         <div class="right-panel">
           <PicShow class="pic-show" />
+          <div class="chart-container">
+            <div class="chart-controls">
+              <q-btn-toggle
+                v-model="chartPeriod"
+                :options="[
+                  { label: t('title.byYear'), value: 'year' },
+                  { label: t('title.byMonth'), value: 'month' }
+                ]"
+                class="q-mb-md"
+                size="sm"
+                text-color="white"
+                rounded
+              />
+            </div>
+            <GameStartsChart :period="chartPeriod" />
+          </div>
         </div>
       </div>
 
@@ -81,5 +100,13 @@ const pageSwitch = ref(false);
 
 .pic-show {
   @apply w-full h-[376px];
+}
+
+.chart-container {
+  @apply mt-5  rounded-lg relative;
+}
+
+.chart-controls {
+  @apply flex justify-end mb-2 absolute z-10 right-4 bottom-0;
 }
 </style>

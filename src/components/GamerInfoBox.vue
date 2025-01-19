@@ -201,13 +201,29 @@ onUnmounted(() => {
 }
 
 .m-gamer-base-status {
-  @apply grid grid-cols-2 gap-4  overflow-hidden items-start;
+  @apply grid grid-cols-2 gap-4 overflow-hidden items-start;
   @apply lg:flex-row;
-  .m-child {
-    @apply flex flex-row flex-nowrap items-center justify-center mx-auto my-auto;
+}
 
-    @apply lg:mb-0 lg:mr-5 lg:last:mr-0 lg:translate-x-0;
-  }
+.m-gamer-base-status .m-child {
+  @apply flex flex-row flex-nowrap items-center justify-start mx-auto my-auto w-full;
+  @apply lg:mb-0 lg:mr-5 lg:last:mr-0 lg:translate-x-0;
+}
+
+.m-gamer-base-status .m-child .q-icon {
+  @apply min-w-[3rem];
+}
+
+.m-gamer-base-status .m-child .flex-col {
+  @apply flex justify-center;
+}
+
+.m-gamer-base-status .m-child .flex-col span {
+  @apply leading-tight;
+}
+
+.m-gamer-base-status .m-child .flex-col span:last-child {
+  @apply font-medium;
 }
 </style>
 <style lang="css" scoped>
