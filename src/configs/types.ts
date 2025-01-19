@@ -81,4 +81,9 @@ export function getPlayerData(): PlayerData | null {
   return G_playerData;
 }
 
+export function getFinishedGames(): number {
+  const gameData = getGameData();
+  return gameData.filter((game) => game.isFinished).length;
+}
+
 export { G_gameData, G_playerData };

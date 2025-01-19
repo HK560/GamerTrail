@@ -4,7 +4,8 @@ import { t } from "../plugins/i18n";
 import {
   getTotalPlayedTime,
   gettotalPlayed,
-  getPlayerData
+  getPlayerData,
+  getFinishedGames
 } from "../configs/types";
 import "@quasar/extras/animate/fadeIn.css";
 import "@quasar/extras/animate/fadeOut.css";
@@ -78,7 +79,7 @@ const statusList = computed(() => [
   {
     icon: "mdi-check-outline",
     label: t("title.gameFinished"),
-    value: "PC"
+    value: getFinishedGames()
   }
 ]);
 

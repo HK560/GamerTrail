@@ -2,7 +2,15 @@ import { createI18n } from "vue-i18n";
 import zhCN from "../locales/zh-CN.json";
 import en from "../locales/en.json";
 
-const defaultLang = localStorage.getItem("lang") || "en";
+// 获取浏览器语言设置
+const getBrowserLanguage = () => {
+  const browserLang = navigator.language.toLowerCase();
+  // 如果浏览器语言以 zh 开头，返回 zh，否则返回 en
+  return browserLang.startsWith("zh") ? "zh" : "en";
+};
+
+// 优先使用本地存储的语言设置，如果没有则使用浏览器语言
+const defaultLang = localStorage.getItem("lang") || getBrowserLanguage();
 
 export const i18n = createI18n({
   legacy: false, // you must specify 'legacy: false' option
