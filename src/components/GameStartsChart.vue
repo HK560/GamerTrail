@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, onUnmounted } from "vue";
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
 import { BarChart } from "echarts/charts";
@@ -13,6 +13,7 @@ import {
 import VChart from "vue-echarts";
 import type { EChartsOption } from "echarts";
 import { t } from "@/plugins/i18n";
+import { isMobile } from "vue-device-detect";
 
 use([
   CanvasRenderer,
@@ -159,6 +160,14 @@ const chartOption = ref<EChartsOption>({
   ]
 }) as { value: { series: { data: [number, number][] }[] } };
 
+// 添加窗口宽度响应式引用
+const windowWidth = ref(window.innerWidth);
+
+// 更新窗口宽度的处理函数
+const handleResize = () => {
+  windowWidth.value = window.innerWidth;
+};
+
 const loadData = async () => {
   try {
     const response = await fetch("/data/gameData.json");
@@ -170,9 +179,15 @@ const loadData = async () => {
     if (props.period === "month") {
       // 获取当前日期
       const now = new Date();
-      // 生成最近12个月的数据结构
-      const last12Months = Array.from({ length: 12 }, (_, i) => {
-        const date = new Date(now.getFullYear(), now.getMonth() - (11 - i), 1);
+      // 根据设备类型和窗口宽度决定显示的月份数量
+      const monthsToShow = isMobile || windowWidth.value < 1024 ? 6 : 12;
+      // 生成最近N个月的数据结构
+      const lastMonths = Array.from({ length: monthsToShow }, (_, i) => {
+        const date = new Date(
+          now.getFullYear(),
+          now.getMonth() - (monthsToShow - 1 - i),
+          1
+        );
         return {
           key: `${date.getFullYear()}-${date.getMonth() + 1}`,
           time: date.getTime(),
@@ -184,14 +199,14 @@ const loadData = async () => {
       gamesWithStartTime.forEach((game: any) => {
         const date = new Date(game.startTime * 1000);
         const key = `${date.getFullYear()}-${date.getMonth() + 1}`;
-        const monthData = last12Months.find((m) => m.key === key);
+        const monthData = lastMonths.find((m) => m.key === key);
         if (monthData) {
           monthData.count++;
         }
       });
 
       // 转换为图表数据格式
-      chartOption.value.series[0].data = last12Months.map((item) => [
+      chartOption.value.series[0].data = lastMonths.map((item) => [
         item.time,
         item.count
       ]);
@@ -246,8 +261,25 @@ watch(
   }
 );
 
+// 监听窗口宽度变化重新加载数据
+watch(
+  () => windowWidth.value,
+  () => {
+    if (props.period === "month") {
+      loadData();
+    }
+  }
+);
+
+// 在组件挂载时添加事件监听
 onMounted(() => {
+  window.addEventListener("resize", handleResize);
   loadData();
+});
+
+// 在组件卸载时移除事件监听
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
 });
 </script>
 
