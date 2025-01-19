@@ -1,52 +1,60 @@
 <template>
-  <div class="w-full aspect-[16:9] overflow-hidden">
-    <q-carousel
-      v-model="slide"
-      animated
-      infinite
-      height="100%"
-      navigation
-      :fullscreen="false"
-      :swipeable="true"
-      :autoplay="5000"
-      transition-prev="slide-right"
-      transition-next="slide-left"
-      class="rounded-lg shadow-lg w-full h-full bg-gray-900"
-    >
-      <q-carousel-slide
-        v-for="(image, index) in images"
-        :key="index"
-        :name="index"
-        class="h-full flex justify-center items-center bg-gray-800"
+  <transition
+    enter-active-class="animate__animated animate__fadeIn"
+    leave-active-class="animate__animated animate__fadeOut"
+    mode="out-in"
+  >
+    <div class="w-full aspect-[16:9] overflow-hidden">
+      <q-carousel
+        v-model="slide"
+        animated
+        infinite
+        height="100%"
+        navigation
+        :fullscreen="false"
+        :swipeable="true"
+        :autoplay="5000"
+        transition-prev="slide-right"
+        transition-next="slide-left"
+        class="rounded-lg shadow-lg w-full h-full bg-gray-900"
       >
-        <div
-          class="relative w-full h-full flex justify-center items-center overflow-hidden"
+        <q-carousel-slide
+          v-for="(image, index) in images"
+          :key="index"
+          :name="index"
+          class="h-full flex justify-center items-center bg-gray-800"
         >
-          <img
-            :src="image.url"
-            :alt="image.title"
-            class="min-w-full min-h-full object-cover"
-            :style="{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center'
-            }"
-          />
           <div
-            class="absolute bottom-0 left-0 right-0 bg-black/50 p-4 transition-opacity duration-300 h-[20%]"
+            class="relative w-full h-full flex justify-center items-center overflow-hidden"
           >
-            <h3 class="text-white text-lg font-bold">{{ image.title }}</h3>
-            <p class="text-gray-300 text-sm">{{ image.description }}</p>
+            <img
+              :src="image.url"
+              :alt="image.title"
+              class="min-w-full min-h-full object-cover"
+              :style="{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center'
+              }"
+            />
+            <div
+              class="absolute bottom-0 left-0 right-0 bg-black/50 p-4 transition-opacity duration-300 h-[20%]"
+            >
+              <h3 class="text-white text-lg font-bold">{{ image.title }}</h3>
+              <p class="text-gray-300 text-sm">{{ image.description }}</p>
+            </div>
           </div>
-        </div>
-      </q-carousel-slide>
-    </q-carousel>
-  </div>
+        </q-carousel-slide>
+      </q-carousel>
+    </div>
+  </transition>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import "@quasar/extras/animate/fadeIn.css";
+import "@quasar/extras/animate/fadeOut.css";
 
 interface ImageData {
   url: string;

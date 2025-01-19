@@ -1,79 +1,85 @@
 <template>
-  <div
-    class="w-full h-[300px] bg-black/10 rounded-xl backdrop-blur-md border border-white/20 shadow-lg p-4 relative"
+  <transition
+    enter-active-class="animate__animated animate__fadeIn"
+    leave-active-class="animate__animated animate__fadeOut"
+    mode="out-in"
   >
-    <template v-if="!isLoading">
-      <q-carousel
-        v-model="slide"
-        animated
-        swipeable
-        infinite
-        :height="carouselHeight"
-        class="bg-transparent"
-        navigation
-        navigation-position="bottom"
-        control-color="white"
-        navigation-icon="remove"
-        :navigation-offset="50"
-        :navigation-icon-size="5"
-      >
-        <q-carousel-slide
-          v-for="(page, pageIndex) in platformPages"
-          :key="pageIndex"
-          :name="pageIndex"
-          class="p-0"
+    <div
+      class="w-full h-[300px] bg-black/10 rounded-xl backdrop-blur-md border border-white/20 shadow-lg p-4 relative"
+    >
+      <template v-if="!isLoading">
+        <q-carousel
+          v-model="slide"
+          animated
+          swipeable
+          infinite
+          :height="carouselHeight"
+          class="bg-transparent"
+          navigation
+          navigation-position="bottom"
+          control-color="white"
+          navigation-icon="remove"
+          :navigation-offset="50"
+          :navigation-icon-size="5"
         >
-          <div class="grid grid-cols-2 gap-2">
-            <div
-              v-for="(platform, index) in page"
-              :key="index"
-              :name="index"
-              class="col-span-1"
-              @click="copyUsernameAndJump(platform.accountName, platform.url)"
-            >
+          <q-carousel-slide
+            v-for="(page, pageIndex) in platformPages"
+            :key="pageIndex"
+            :name="pageIndex"
+            class="p-0"
+          >
+            <div class="grid grid-cols-2 gap-2">
               <div
-                class="h-[5rem] flex-col flex-nowrap items-center p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors duration-200 cursor-pointer"
+                v-for="(platform, index) in page"
+                :key="index"
+                :name="index"
+                class="col-span-1"
+                @click="copyUsernameAndJump(platform.accountName, platform.url)"
               >
-                <div class="w-full flex items-center">
-                  <template v-if="platform.icon">
-                    <q-icon
-                      :name="platform.icon"
-                      size="1.5rem"
-                      class="text-gray-300"
-                    ></q-icon>
-                  </template>
-                  <template v-else-if="platform.iconSrc">
-                    <img
-                      :src="platform.iconSrc"
-                      alt="icon"
-                      class="w-6 h-6 text-gray-300"
-                      style="fill: currentColor"
-                    />
-                  </template>
-                  <span class="text-gray-300 text-[0.8rem] ml-2"
-                    >{{ platform.name }}
-                  </span>
-                </div>
-                <div class="w-full h-8 justify-center items-center">
-                  <div
-                    class="h-full text-white text-lg truncate text-center flex items-center justify-center overflow-hidden whitespace-nowrap text-ellipsis select-text"
-                    :title="platform.accountName"
-                  >
-                    {{ platform.accountName }}
+                <div
+                  class="h-[5rem] flex-col flex-nowrap items-center p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors duration-200 cursor-pointer"
+                >
+                  <div class="w-full flex items-center">
+                    <template v-if="platform.icon">
+                      <q-icon
+                        :name="platform.icon"
+                        size="1.5rem"
+                        class="text-gray-300"
+                      ></q-icon>
+                    </template>
+                    <template v-else-if="platform.iconSrc">
+                      <img
+                        :src="platform.iconSrc"
+                        alt="icon"
+                        class="w-6 h-6 text-gray-300"
+                        style="fill: currentColor"
+                      />
+                    </template>
+                    <span class="text-gray-300 text-[0.8rem] ml-2"
+                      >{{ platform.name }}
+                    </span>
+                  </div>
+                  <div class="w-full h-8 justify-center items-center">
+                    <div
+                      class="h-full text-white text-lg truncate text-center flex items-center justify-center overflow-hidden whitespace-nowrap text-ellipsis select-text"
+                      :title="platform.accountName"
+                    >
+                      {{ platform.accountName }}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </q-carousel-slide>
-      </q-carousel>
-    </template>
-    <template v-else>
-      <div class="w-full h-full flex justify-center items-center">
-        <q-spinner color="primary" size="3em" />
-      </div>
-    </template>
-  </div>
+          </q-carousel-slide>
+        </q-carousel>
+      </template>
+      <template v-else>
+        <div class="w-full h-full flex justify-center items-center">
+          <q-spinner color="primary" size="3em" />
+        </div>
+      </template>
+    </div>
+  </transition>
 </template>
 
 <script setup lang="ts">
@@ -86,6 +92,8 @@ import {
 } from "../configs/types";
 import { isMobile } from "vue-device-detect";
 import { t } from "@/plugins/i18n";
+import "@quasar/extras/animate/fadeIn.css";
+import "@quasar/extras/animate/fadeOut.css";
 
 const $q = useQuasar();
 const slide = ref(0);

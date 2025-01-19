@@ -5,7 +5,7 @@ import PicShow from "@/components/PicBox.vue";
 import PlatformsBox from "@/components/PlatformsBox.vue";
 import GameStartsChart from "@/components/GameStartsChart.vue";
 import bgImg from "@/assets/img/Avg_avg_ac9_8.jpg";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import "@quasar/extras/animate/fadeIn.css";
 import "@quasar/extras/animate/fadeOut.css";
 import GamesListBox from "@/components/GamesList/GamesListBox.vue";
@@ -13,6 +13,35 @@ import { t } from "@/plugins/i18n";
 
 const pageSwitch = ref(false);
 const chartPeriod = ref<"year" | "month">("year");
+
+// 添加组件显示状态控制
+const showGamerInfo = ref(false);
+const showPlatforms = ref(false);
+const showPicShow = ref(false);
+const showChart = ref(false);
+
+// 依次显示组件的函数
+const showComponentsSequentially = async () => {
+  const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
+  await delay(100); // 初始延迟
+  showGamerInfo.value = true;
+
+  await delay(300); // GamerInfo 显示后等待 300ms
+  showPlatforms.value = true;
+
+  await delay(300); // Platforms 显示后等待 300ms
+  showPicShow.value = true;
+
+  await delay(300); // PicShow 显示后等待 300ms
+  showChart.value = true;
+};
+
+// 在组件挂载时开始显示
+onMounted(() => {
+  showComponentsSequentially();
+});
 </script>
 
 <template>
@@ -25,27 +54,48 @@ const chartPeriod = ref<"year" | "month">("year");
     >
       <div id="gamer-info-box" v-if="pageSwitch === false" class="main-box">
         <div class="left-panel">
-          <GamerInfoBox class="mb-5" />
-          <PlatformsBox class="platforms" />
+          <transition
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+          >
+            <GamerInfoBox v-if="showGamerInfo" class="mb-5" />
+          </transition>
+          <transition
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+          >
+            <PlatformsBox v-if="showPlatforms" class="platforms" />
+          </transition>
         </div>
         <div class="right-panel">
-          <PicShow class="pic-show" />
-          <div class="chart-container">
-            <div class="chart-controls">
-              <q-btn-toggle
-                v-model="chartPeriod"
-                :options="[
-                  { label: t('title.byYear'), value: 'year' },
-                  { label: t('title.byMonth'), value: 'month' }
-                ]"
-                class="q-mb-md"
-                size="sm"
-                text-color="white"
-                rounded
-              />
+          <transition
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+          >
+            <PicShow v-if="showPicShow" class="pic-show" />
+          </transition>
+          <transition
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+            mode="out-in"
+          >
+            <div v-if="showChart" class="chart-container">
+              <div class="chart-controls">
+                <q-btn-toggle
+                  v-model="chartPeriod"
+                  :options="[
+                    { label: t('title.byYear'), value: 'year' },
+                    { label: t('title.byMonth'), value: 'month' }
+                  ]"
+                  class="q-mb-md"
+                  size="sm"
+                  text-color="white"
+                  rounded
+                />
+              </div>
+              <GameStartsChart :period="chartPeriod" />
             </div>
-            <GameStartsChart :period="chartPeriod" />
-          </div>
+          </transition>
         </div>
       </div>
 
@@ -103,7 +153,8 @@ const chartPeriod = ref<"year" | "month">("year");
 }
 
 .chart-container {
-  @apply mt-5  rounded-lg relative;
+  @apply mt-5 rounded-lg relative bg-black/10 backdrop-blur-md shadow-lg;
+  animation-fill-mode: both !important;
 }
 
 .chart-controls {
