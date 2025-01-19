@@ -6,31 +6,56 @@ import {
   gettotalPlayed,
   getPlayerData
 } from "../configs/types";
-
-// 当前显示索引
-const currentIndex = ref(0);
-// 轮换间隔时间
-const intervalTime = 5000;
-let intervalId: number | null = null;
+import "@quasar/extras/animate/fadeIn.css";
+import "@quasar/extras/animate/fadeOut.css";
+// 分别定义头像、昵称和bio的当前索引
+const avatarIndex = ref(0);
+const nicknameIndex = ref(0);
+const bioIndex = ref(0);
+// 定义不同的轮换间隔时间
+const avatarIntervalTime = 5000; // 头像5秒
+const nicknameIntervalTime = 7000; // 昵称7秒
+const bioIntervalTime = 8000; // bio 10秒
+let avatarIntervalId: number | null = null;
+let nicknameIntervalId: number | null = null;
+let bioIntervalId: number | null = null;
 
 // 玩家数据
 const playerData = ref<ReturnType<typeof getPlayerData>>(null);
 const isLoading = ref(true);
 
-// 启动轮换
-const startRotation = () => {
-  intervalId = setInterval(() => {
-    currentIndex.value =
-      (currentIndex.value + 1) % (playerData.value?.avatar?.length || 1);
-  }, intervalTime);
+// 启动头像轮换
+const startAvatarRotation = () => {
+  avatarIntervalId = setInterval(() => {
+    avatarIndex.value =
+      (avatarIndex.value + 1) % (playerData.value?.avatar?.length || 1);
+  }, avatarIntervalTime);
 };
 
-// 停止轮换
-const stopRotation = () => {
-  if (intervalId) {
-    clearInterval(intervalId);
-    intervalId = null;
-  }
+// 启动昵称轮换
+const startNicknameRotation = () => {
+  nicknameIntervalId = setInterval(() => {
+    nicknameIndex.value =
+      (nicknameIndex.value + 1) % (playerData.value?.nickname?.length || 1);
+  }, nicknameIntervalTime);
+};
+
+// 启动bio轮换
+const startBioRotation = () => {
+  bioIntervalId = setInterval(() => {
+    bioIndex.value =
+      (bioIndex.value + 1) % (playerData.value?.bio?.length || 1);
+  }, bioIntervalTime);
+};
+
+// 停止所有轮换
+const stopAllRotation = () => {
+  if (avatarIntervalId) clearInterval(avatarIntervalId);
+  if (nicknameIntervalId) clearInterval(nicknameIntervalId);
+  if (bioIntervalId) clearInterval(bioIntervalId);
+  avatarIntervalId = null;
+  nicknameIntervalId = null;
+  bioIntervalId = null;
 };
 
 // 状态列表
@@ -62,13 +87,15 @@ watchEffect(() => {
   const data = getPlayerData();
   if (data) {
     playerData.value = data;
-    startRotation();
+    startAvatarRotation();
+    startNicknameRotation();
+    startBioRotation();
     isLoading.value = false;
   }
 });
 
 onUnmounted(() => {
-  stopRotation();
+  stopAllRotation();
 });
 </script>
 
@@ -77,7 +104,7 @@ onUnmounted(() => {
     v-if="!isLoading"
     class="w-full flex flex-col no-wrap lg:!gap-4 justify-center items-center"
   >
-    <div class="m-panel lg:!w-[30%]">
+    <div class="m-panel w-full">
       <div
         class="flex flex-col lg:flex-row !flex-nowrap mx-[2%] justify-center items-center lg:justify-normal w-full"
       >
@@ -86,33 +113,55 @@ onUnmounted(() => {
             size="128px"
             class="shadow-lg cursor-pointer"
             @click="
-              currentIndex =
-                (currentIndex + 1) % (playerData?.avatar?.length || 1)
+              avatarIndex =
+                (avatarIndex + 1) % (playerData?.avatar?.length || 1)
             "
           >
-            <q-img :src="playerData?.avatar?.[currentIndex]" />
+            <transition
+              enter-active-class="animate__animated animate__fadeIn"
+              leave-active-class="animate__animated animate__fadeOut"
+              mode="out-in"
+            >
+              <q-img
+                :key="avatarIndex"
+                :src="playerData?.avatar?.[avatarIndex]"
+              />
+            </transition>
           </q-avatar>
         </div>
         <div id="name-and-description" class="m-desc-box">
-          <div
-            class="text-2xl font-bold cursor-pointer"
-            @click="
-              currentIndex =
-                (currentIndex + 1) % (playerData?.nickname?.length || 1)
-            "
+          <transition
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+            mode="out-in"
           >
-            {{ playerData?.nickname?.[currentIndex] }}
-          </div>
-          <q-scroll-area class="mt-2 h-5 lg:h-20">
-            <p
-              class="text-[0.8rem] text-gray-300 text-nowrap whitespace-pre-wrap lg:text-left cursor-pointer"
+            <div
+              :key="nicknameIndex"
+              class="text-2xl font-bold cursor-pointer"
               @click="
-                currentIndex =
-                  (currentIndex + 1) % (playerData?.bio?.length || 1)
+                nicknameIndex =
+                  (nicknameIndex + 1) % (playerData?.nickname?.length || 1)
               "
             >
-              {{ playerData?.bio?.[currentIndex] }}
-            </p>
+              {{ playerData?.nickname?.[nicknameIndex] }}
+            </div>
+          </transition>
+          <q-scroll-area class="mt-2 h-5 lg:h-20">
+            <transition
+              enter-active-class="animate__animated animate__fadeIn"
+              leave-active-class="animate__animated animate__fadeOut"
+              mode="out-in"
+            >
+              <p
+                :key="bioIndex"
+                class="text-[0.8rem] text-gray-300 text-nowrap whitespace-pre-wrap lg:text-left cursor-pointer"
+                @click="
+                  bioIndex = (bioIndex + 1) % (playerData?.bio?.length || 1)
+                "
+              >
+                {{ playerData?.bio?.[bioIndex] }}
+              </p>
+            </transition>
           </q-scroll-area>
         </div>
       </div>

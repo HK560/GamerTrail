@@ -2,7 +2,7 @@ import { Loading, LoadingBar, Notify } from "quasar";
 // Import icon libraries
 import "@quasar/extras/material-icons/material-icons.css";
 import "@quasar/extras/material-icons-outlined/material-icons-outlined.css";
-
+import "@quasar/extras/bootstrap-icons/bootstrap-icons.css";
 // A few examples for animations from Animate.css:
 // import @quasar/extras/animate/fadeOut.css
 

@@ -1,7 +1,8 @@
 export type Platform = {
   name: string;
   accountName: string;
-  icon: string;
+  icon?: string;
+  iconSrc?: string;
   url: string;
 };
 

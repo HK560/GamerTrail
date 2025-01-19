@@ -14,14 +14,28 @@
           class="h-[5rem] flex-col flex-nowrap items-center p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors duration-200 cursor-pointer"
         >
           <div class="w-full flex items-center">
-            <q-icon :name="platform.icon" size="2rem" class="text-gray-300" />
+            <template v-if="platform.icon">
+              <q-icon
+                :name="platform.icon"
+                size="1.5rem"
+                class="text-gray-300"
+              ></q-icon>
+            </template>
+            <template v-else-if="platform.iconSrc">
+              <img
+                :src="platform.iconSrc"
+                alt="icon"
+                class="w-6 h-6 text-gray-300"
+                style="fill: currentColor"
+              />
+            </template>
             <span class="text-gray-300 text-[0.8rem] ml-2"
               >{{ platform.name }}
             </span>
           </div>
           <div class="w-full h-8 justify-center items-center">
             <div
-              class="h-full text-white text-lg truncate text-center flex items-center justify-center overflow-hidden whitespace-nowrap text-ellipsis"
+              class="h-full text-white text-lg truncate text-center flex items-center justify-center overflow-hidden whitespace-nowrap text-ellipsis select-text"
               :title="platform.accountName"
             >
               {{ platform.accountName }}

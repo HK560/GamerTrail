@@ -1,42 +1,48 @@
 {
-  "nickname": ["HK560", "elubadaernU"],
+  "nickname": [
+    "HK560",
+    "elbadaernU"
+  ],
   "avatar": [
     "https://i.ibb.co/0tGZc9W/2.png",
     "/images/gamer/avatar_hk560.jpg"
   ],
-  "bio": ["与光同尘", "游戏爱好者", "探索未知的冒险者"],
+  "bio": [
+    "与光同尘",
+    "游戏爱好者",
+    "JRPG爱好者\nFPS爱好者"
+  ],
   "platforms": [
     {
       "name": "Steam",
-      "accountName": "HK560HK560HK560HK560HK560HK560HK560HK560HK560HK560HK560HK560HK560HK560HK560",
-      "icon": "mdi-steam",
+      "accountName": "HK560",
+      "icon": "bi-steam",
       "url": "https://steamcommunity.com/profiles/76561198136343255/"
     },
     {
       "name": "EA",
       "accountName": "HK560",
-      "icon": "mdi-ea"
+      "iconSrc": "/images/icon/ea-icon.svg"
     },
     {
       "name": "Xbox",
       "accountName": "HK560",
-      "icon": "mdi-xbox"
+      "icon": "bi-xbox"
     },
     {
-      "name": "Ste1am",
+      "name": "BattleNet",
       "accountName": "HK560",
-      "icon": "mdi-steam",
-      "url": "https://steamcommunity.com/profiles/76561198136343255/"
+      "iconSrc": "/images/icon/battlenet-icon.svg"
     },
     {
-      "name": "E2A",
+      "name": "Ubisoft",
       "accountName": "HK560",
-      "icon": "mdi-ea"
+      "iconSrc": "/images/icon/ubisoft-icon.svg"
     },
     {
-      "name": "Xb3ox",
+      "name": "Playstation",
       "accountName": "HK560",
-      "icon": "mdi-xbox"
+      "icon": "bi-playstation"
     }
   ]
 }

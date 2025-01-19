@@ -7,7 +7,7 @@ const players = ref(getPlayerData());
 </script>
 
 <template>
-  <div class="w-dvw h-dvh">
+  <div class="w-dvw h-dvh select-none">
     <RouterView />
   </div>
 </template>
@@ -26,5 +26,13 @@ const players = ref(getPlayerData());
 
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+/* 全局禁止选择 */
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 </style>
