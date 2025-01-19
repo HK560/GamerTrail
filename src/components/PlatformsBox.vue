@@ -1,49 +1,71 @@
 <template>
   <div
-    class="w-full h-[300px] bg-black/10 rounded-xl backdrop-blur-md border border-white/20 shadow-lg p-4"
+    class="w-full h-[300px] bg-black/10 rounded-xl backdrop-blur-md border border-white/20 shadow-lg p-4 relative"
   >
-    <div class="grid grid-cols-2 grid-flow-row gap-2">
-      <div
-        v-for="(platform, index) in platforms"
-        :key="index"
-        :name="index"
-        class="col-span-1"
-        @click="copyUsernameAndJump(platform.accountName, platform.url)"
+    <q-carousel
+      v-model="slide"
+      animated
+      swipeable
+      infinite
+      :height="carouselHeight"
+      class="bg-transparent"
+      navigation
+      navigation-position="bottom"
+      control-color="white"
+      navigation-icon="remove"
+      :navigation-offset="50"
+      :navigation-icon-size="5"
+    >
+      <q-carousel-slide
+        v-for="(page, pageIndex) in platformPages"
+        :key="pageIndex"
+        :name="pageIndex"
+        class="p-0"
       >
-        <div
-          class="h-[5rem] flex-col flex-nowrap items-center p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors duration-200 cursor-pointer"
-        >
-          <div class="w-full flex items-center">
-            <template v-if="platform.icon">
-              <q-icon
-                :name="platform.icon"
-                size="1.5rem"
-                class="text-gray-300"
-              ></q-icon>
-            </template>
-            <template v-else-if="platform.iconSrc">
-              <img
-                :src="platform.iconSrc"
-                alt="icon"
-                class="w-6 h-6 text-gray-300"
-                style="fill: currentColor"
-              />
-            </template>
-            <span class="text-gray-300 text-[0.8rem] ml-2"
-              >{{ platform.name }}
-            </span>
-          </div>
-          <div class="w-full h-8 justify-center items-center">
+        <div class="grid grid-cols-2 gap-2">
+          <div
+            v-for="(platform, index) in page"
+            :key="index"
+            :name="index"
+            class="col-span-1"
+            @click="copyUsernameAndJump(platform.accountName, platform.url)"
+          >
             <div
-              class="h-full text-white text-lg truncate text-center flex items-center justify-center overflow-hidden whitespace-nowrap text-ellipsis select-text"
-              :title="platform.accountName"
+              class="h-[5rem] flex-col flex-nowrap items-center p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors duration-200 cursor-pointer"
             >
-              {{ platform.accountName }}
+              <div class="w-full flex items-center">
+                <template v-if="platform.icon">
+                  <q-icon
+                    :name="platform.icon"
+                    size="1.5rem"
+                    class="text-gray-300"
+                  ></q-icon>
+                </template>
+                <template v-else-if="platform.iconSrc">
+                  <img
+                    :src="platform.iconSrc"
+                    alt="icon"
+                    class="w-6 h-6 text-gray-300"
+                    style="fill: currentColor"
+                  />
+                </template>
+                <span class="text-gray-300 text-[0.8rem] ml-2"
+                  >{{ platform.name }}
+                </span>
+              </div>
+              <div class="w-full h-8 justify-center items-center">
+                <div
+                  class="h-full text-white text-lg truncate text-center flex items-center justify-center overflow-hidden whitespace-nowrap text-ellipsis select-text"
+                  :title="platform.accountName"
+                >
+                  {{ platform.accountName }}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </q-carousel-slide>
+    </q-carousel>
   </div>
 </template>
 
@@ -58,18 +80,15 @@ const $q = useQuasar();
 const slide = ref(0);
 const platforms = computed(() => G_playerData?.platforms || []);
 
-// 计算每页显示的平台数量
-const itemsPerPage = computed(() => {
-  if ($q.screen.width > 600) return 6;
-  return 2;
-});
+// 固定每页显示6个平台（2列3行）
+const itemsPerPage = computed(() => 6);
 
 // 计算轮播高度
 const carouselHeight = computed(() => {
-  return `${itemsPerPage.value * 6 + 2}rem`;
+  return "300px"; // 固定高度以适应3行内容
 });
 
-// 将平台分组
+// 将平台分组，每组6个
 const platformPages = computed(() => {
   const pages = [];
   for (let i = 0; i < platforms.value.length; i += itemsPerPage.value) {
