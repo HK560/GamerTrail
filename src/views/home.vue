@@ -133,10 +133,10 @@ onMounted(() => {
   @apply py-4 gap-5;
 
   .left-panel {
-    @apply w-full lg:w-[400px] h-full max-w-[450px] lg:max-w-[unset];
+    @apply w-full lg:w-[400px]  max-w-[450px] lg:max-w-[unset];
   }
   .right-panel {
-    @apply w-full lg:w-[668px] h-full;
+    @apply w-full lg:w-[668px];
   }
 }
 
@@ -149,7 +149,16 @@ onMounted(() => {
 }
 
 .pic-show {
-  @apply w-full h-[376px];
+  @apply w-full relative shadow-lg;
+  aspect-ratio: 16/9;
+
+  @screen lg {
+    height: 376px;
+  }
+}
+
+.pic-show :deep(.pic-content) {
+  @apply w-full h-full;
 }
 
 .chart-container {
