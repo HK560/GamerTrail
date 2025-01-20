@@ -102,7 +102,7 @@ onMounted(() => {
       <div
         id="game-list-box"
         v-else-if="pageSwitch === true"
-        class="info-box !w-[80%]"
+        class="info-box !w-[80%] h-[100vh] overflow-hidden"
       >
         <GamesListBox />
       </div>

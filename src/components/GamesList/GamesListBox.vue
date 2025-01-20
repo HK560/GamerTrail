@@ -15,7 +15,7 @@ const showConfig: ListGameCardConfig = {
 <template>
   <div ref="boxRoot" class="w-full h-full max-w-full">
     <div
-      class="list-box py-4 overflow-y-scroll overflow-x-hidden custom-scrollbar"
+      class="list-box py-4 overflow-y-auto overflow-x-hidden custom-scrollbar h-full"
     >
       <q-intersection
         v-for="game in gameAllData"
