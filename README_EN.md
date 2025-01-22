@@ -6,6 +6,12 @@ A personal website for displaying gamers' gaming records and statistics.
 
 Still under development, to be improved...
 
+[Demo](https://gamer-trail.vercel.app/)
+
+<div align="center">
+  <img src="preview/image.png" alt="Preview" width="80%">
+</div>
+
 ## Features
 
 - Static website, no backend required, can be deployed to Vercel

@@ -6,6 +6,12 @@
 
 仍在开发中，待完善...
 
+[Demo预览](https://gamer-trail.vercel.app/)
+
+<div align="center">
+  <img src="preview/image.png" alt="预览图" width="80%">
+</div>
+
 ## 功能特点
 
 - 纯静态网站，无需后端支持，可部署至Vercel
