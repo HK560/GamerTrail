@@ -150,13 +150,13 @@ onUnmounted(() => {
               {{ playerData?.nickname?.[nicknameIndex] }}
             </div>
           </transition>
-          <q-scroll-area class="mt-2 h-5 lg:h-20">
+          <q-scroll-area class="lg:mt-2 h-20 lg:h-30">
             <transition
               enter-active-class="animate__animated animate__fadeIn"
               leave-active-class="animate__animated animate__fadeOut"
               mode="out-in"
             >
-              <p
+              <span
                 :key="bioIndex"
                 class="text-[0.8rem] text-gray-300 text-nowrap whitespace-pre-wrap lg:text-left cursor-pointer"
                 @click="
@@ -164,7 +164,7 @@ onUnmounted(() => {
                 "
               >
                 {{ playerData?.bio?.[bioIndex] }}
-              </p>
+              </span>
             </transition>
           </q-scroll-area>
         </div>
@@ -191,21 +191,21 @@ onUnmounted(() => {
 
 <style lang="postcss" scoped>
 .m-panel {
-  @apply w-full bg-black/10 rounded-xl  backdrop-blur-md border border-white/20 shadow-lg p-6 py-[20px] flex items-center justify-center;
+  @apply w-full bg-black/10 rounded-xl  backdrop-blur-md border border-white/20 shadow-lg p-6 py-[1.25rem] flex items-center justify-center;
   animation: fadeIn;
   animation-duration: 2s;
   @apply mb-5 last:mb-0;
-  @apply lg:h-[180px] lg:max-w-none lg:mb-0 lg:justify-start;
+  @apply lg:h-[11.25rem] lg:max-w-none lg:mb-0 lg:justify-center;
   @apply first:bg-white/0 first:backdrop-blur-none first:border-none first:shadow-none;
 }
 
 .m-desc-box {
-  @apply h-full py-2 text-white grow text-center flex-col flex-nowrap w-full;
-  @apply lg:pl-[20px] lg:grow lg:w-[250px] lg:text-left lg:h-[128px];
+  @apply py-2 text-white grow text-center flex-col flex-nowrap w-full;
+  @apply lg:pl-[1.25rem] lg:grow lg:w-[15.625rem] lg:text-left lg:h-[8rem];
 }
 
 .m-gamer-base-status {
-  @apply grid grid-cols-2 gap-4 overflow-hidden items-start;
+  @apply grid grid-cols-2 gap-4 overflow-hidden items-center;
   @apply lg:flex-row;
 }
 

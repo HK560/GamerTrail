@@ -99,20 +99,20 @@ onMounted(() => {
 
 <style lang="postcss" scoped>
 .home-box {
-  @apply w-full h-full relative flex flex-col items-center gap-[20px] justify-center;
+  @apply w-full h-full relative flex flex-col items-center gap-[1.25rem] justify-center;
   @apply overflow-hidden;
   @apply lg:min-w-[1500px] lg:min-h-[720px];
 }
 
 .main-box {
-  @apply absolute flex flex-col lg:flex-row  items-center h-full lg:h-[720px]  w-[90%] lg:w-[unset] my-5 min-h-[calc(100vh-20vh)] overflow-auto;
-  @apply py-4 gap-5;
+  @apply absolute flex flex-col lg:flex-row  items-center h-full lg:h-[720px]  w-[90%] lg:w-[unset] my-[1.25rem] min-h-[calc(100vh-20vh)] overflow-auto;
+  @apply py-4 gap-[1.25rem];
 
   .left-panel {
-    @apply w-full lg:w-[400px]  max-w-[450px] lg:max-w-[unset];
+    @apply w-full lg:w-[25rem]  max-w-[28.125rem] lg:max-w-[unset];
   }
   .right-panel {
-    @apply w-full lg:w-[668px];
+    @apply w-full lg:w-[41.75rem];
   }
 }
 
@@ -125,11 +125,11 @@ onMounted(() => {
 }
 
 .pic-show {
-  @apply w-full relative shadow-lg;
+  @apply w-full relative shadow-lg rounded-xl;
   aspect-ratio: 16/9;
 
   @screen lg {
-    height: 376px;
+    height: 23.5rem;
   }
 }
 
@@ -138,10 +138,10 @@ onMounted(() => {
 }
 
 .chart-container {
-  @apply mt-5 rounded-lg relative bg-black/10 backdrop-blur-md shadow-lg;
+  @apply mt-[1.25rem]  relative bg-black/10 backdrop-blur-md rounded-xl shadow-lg;
   animation-fill-mode: both !important;
   animation: fadeIn;
-  animation-duration: 3s;
+  animation-duration: 1s;
 }
 
 .chart-controls {

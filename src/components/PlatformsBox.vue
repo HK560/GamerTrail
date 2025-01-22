@@ -5,7 +5,7 @@
     mode="out-in"
   >
     <div
-      class="w-full h-[300px] bg-black/10 rounded-xl backdrop-blur-md border border-white/20 shadow-lg p-4 relative"
+      class="w-full h-[18.75rem] bg-black/10 rounded-xl backdrop-blur-md border border-white/20 shadow-lg p-4 relative"
       style="animation: fadeIn; animation-duration: 2s"
     >
       <template v-if="!isLoading">
@@ -116,7 +116,7 @@ const itemsPerPage = computed(() => 6);
 
 // 计算轮播高度
 const carouselHeight = computed(() => {
-  return "300px"; // 固定高度以适应3行内容
+  return "18.75rem"; // 300px转换为rem
 });
 
 // 将平台分组，每组6个

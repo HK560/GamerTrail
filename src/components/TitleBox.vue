@@ -4,11 +4,11 @@ import { t } from "@/plugins/i18n";
 const title = ref(t("message.hello"));
 </script>
 <template>
-  <q-card class="h-[48px] justify-center flex flex-col align-middle relative">
+  <q-card class="h-[3rem] justify-center flex flex-col align-middle relative">
     <div class="row">
       <div
         id="site-title"
-        class="w-[54px] h-full ml-5 flex justify-center items-center"
+        class="w-[3.375rem] h-full ml-5 flex justify-center items-center"
       >
         logo
       </div>

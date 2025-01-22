@@ -26,6 +26,75 @@
     />
     <title>GamerTrail</title>
   </head>
+  <style>
+    html {
+
+font-size: 16px;
+
+}
+
+
+
+/* 针对2K及以上分辨率 */
+
+@media screen and (min-width: 2048px) {
+
+html {
+
+  font-size: 18px;
+
+}
+
+}
+
+
+
+/* 针对4K分辨率 */
+
+@media screen and (min-width: 3840px) {
+
+html {
+
+  font-size: 20px;
+
+}
+
+}
+
+
+
+/* 全局组件缩放类 */
+
+.scale-with-screen {
+
+transform-origin: left top;
+
+}
+
+
+
+@media screen and (min-width: 2048px) {
+
+.scale-with-screen {
+
+  transform: scale(1.15);
+
+}
+
+}
+
+
+
+@media screen and (min-width: 3840px) {
+
+.scale-with-screen {
+
+  transform: scale(1.3);
+
+}
+
+}
+  </style>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>

@@ -31,7 +31,7 @@ const showConfig: ListGameCardConfig = {
 </template>
 <style lang="postcss" scoped>
 .list-box {
-  @apply w-full h-full grid gap-5 grid-flow-row  grid-cols-2  items-center justify-items-center;
+  @apply w-full h-full grid gap-[1.25rem] grid-flow-row  grid-cols-2  items-center justify-items-center;
   @apply lg:grid-cols-6;
 }
 </style>

@@ -14,8 +14,6 @@ import VChart from "vue-echarts";
 import type { EChartsOption } from "echarts";
 import { t } from "@/plugins/i18n";
 import { isMobile } from "vue-device-detect";
-import "@quasar/extras/animate/fadeIn.css";
-import "@quasar/extras/animate/fadeOut.css";
 
 use([
   CanvasRenderer,
@@ -286,24 +284,18 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div>
-    <transition
-      enter-active-class="animate__animated animate__fadeIn"
-      leave-active-class="animate__animated animate__fadeOut"
-      mode="out-in"
+  <div class="chart-container">
+    <div
+      class="w-full h-[18.75rem] rounded-xl border border-white/20 shadow-lg p-4"
     >
-      <div
-        class="w-full h-[300px] bg-black/10 rounded-xl backdrop-blur-md border border-white/20 shadow-lg p-4"
-      >
-        <v-chart class="w-full h-full" :option="chartOption" autoresize />
-      </div>
-    </transition>
+      <v-chart class="w-full h-full" :option="chartOption" autoresize />
+    </div>
   </div>
 </template>
 
 <style scoped>
 .chart {
   width: 100%;
-  height: 250px;
+  height: 15.625rem; /* 250px */
 }
 </style>
