@@ -6,7 +6,7 @@ A personal website for displaying gamers' gaming records and statistics.
 
 Still under development, to be improved...
 
-[Demo](https://gamer-trail.vercel.app/)
+[Demo](https://gamertrail.elbadaernu.com/)
 
 <div align="center">
   <img src="preview/image.png" alt="Preview" width="80%">

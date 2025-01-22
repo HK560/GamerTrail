@@ -6,7 +6,7 @@
 
 仍在开发中，待完善...
 
-[Demo预览](https://gamer-trail.vercel.app/)
+[Demo预览](https://gamertrail.elbadaernu.com/)
 
 <div align="center">
   <img src="preview/image.png" alt="预览图" width="80%">
