@@ -20,21 +20,16 @@ const showPlatforms = ref(false);
 const showPicShow = ref(false);
 const showChart = ref(false);
 
-// 依次显示组件的函数
 const showComponentsSequentially = async () => {
   const delay = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
 
-  await delay(100); // 初始延迟
   showGamerInfo.value = true;
 
-  await delay(300); // GamerInfo 显示后等待 300ms
   showPlatforms.value = true;
 
-  await delay(300); // Platforms 显示后等待 300ms
   showPicShow.value = true;
 
-  await delay(300); // PicShow 显示后等待 300ms
   showChart.value = true;
 };
 
@@ -54,48 +49,29 @@ onMounted(() => {
     >
       <div id="gamer-info-box" v-if="pageSwitch === false" class="main-box">
         <div class="left-panel">
-          <transition
-            enter-active-class="animate__animated animate__fadeIn"
-            leave-active-class="animate__animated animate__fadeOut"
-          >
-            <GamerInfoBox v-if="showGamerInfo" class="mb-5" />
-          </transition>
-          <transition
-            enter-active-class="animate__animated animate__fadeIn"
-            leave-active-class="animate__animated animate__fadeOut"
-          >
-            <PlatformsBox v-if="showPlatforms" class="platforms" />
-          </transition>
+          <GamerInfoBox v-if="showGamerInfo" class="mb-5" />
+
+          <PlatformsBox v-if="showPlatforms" class="platforms" />
         </div>
         <div class="right-panel">
-          <transition
-            enter-active-class="animate__animated animate__fadeIn"
-            leave-active-class="animate__animated animate__fadeOut"
-          >
-            <PicShow v-if="showPicShow" class="pic-show" />
-          </transition>
-          <transition
-            enter-active-class="animate__animated animate__fadeIn"
-            leave-active-class="animate__animated animate__fadeOut"
-            mode="out-in"
-          >
-            <div v-if="showChart" class="chart-container">
-              <div class="chart-controls">
-                <q-btn-toggle
-                  v-model="chartPeriod"
-                  :options="[
-                    { label: t('title.byYear'), value: 'year' },
-                    { label: t('title.byMonth'), value: 'month' }
-                  ]"
-                  class="q-mb-md"
-                  size="sm"
-                  text-color="white"
-                  rounded
-                />
-              </div>
-              <GameStartsChart :period="chartPeriod" />
+          <PicShow v-if="showPicShow" class="pic-show" />
+
+          <div v-if="showChart" class="chart-container">
+            <div class="chart-controls">
+              <q-btn-toggle
+                v-model="chartPeriod"
+                :options="[
+                  { label: t('title.byYear'), value: 'year' },
+                  { label: t('title.byMonth'), value: 'month' }
+                ]"
+                class="q-mb-md"
+                size="xs"
+                text-color="white"
+                rounded
+              />
             </div>
-          </transition>
+            <GameStartsChart :period="chartPeriod" />
+          </div>
         </div>
       </div>
 
@@ -164,9 +140,11 @@ onMounted(() => {
 .chart-container {
   @apply mt-5 rounded-lg relative bg-black/10 backdrop-blur-md shadow-lg;
   animation-fill-mode: both !important;
+  animation: fadeIn;
+  animation-duration: 3s;
 }
 
 .chart-controls {
-  @apply flex justify-end mb-2 absolute z-10 right-4 bottom-0;
+  @apply flex justify-end  absolute z-10 right-4 bottom-[-0.5rem];
 }
 </style>

@@ -286,17 +286,19 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <transition
-    enter-active-class="animate__animated animate__fadeIn"
-    leave-active-class="animate__animated animate__fadeOut"
-    mode="out-in"
-  >
-    <div
-      class="w-full h-[300px] bg-black/10 rounded-xl backdrop-blur-md border border-white/20 shadow-lg p-4"
+  <div>
+    <transition
+      enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate__fadeOut"
+      mode="out-in"
     >
-      <v-chart class="w-full h-full" :option="chartOption" autoresize />
-    </div>
-  </transition>
+      <div
+        class="w-full h-[300px] bg-black/10 rounded-xl backdrop-blur-md border border-white/20 shadow-lg p-4"
+      >
+        <v-chart class="w-full h-full" :option="chartOption" autoresize />
+      </div>
+    </transition>
+  </div>
 </template>
 
 <style scoped>

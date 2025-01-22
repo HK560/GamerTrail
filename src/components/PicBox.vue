@@ -1,82 +1,79 @@
 <template>
-  <transition
-    enter-active-class="animate__animated animate__fadeIn"
-    leave-active-class="animate__animated animate__fadeOut"
-    mode="out-in"
+  <div
+    class="w-full aspect-[16:9] overflow-hidden relative bg-black/10 backdrop-blur-md shadow-lg;"
+    style="animation: fadeIn; animation-duration: 2s"
   >
-    <div class="w-full aspect-[16:9] overflow-hidden relative">
-      <q-carousel
-        v-model="slide"
-        animated
-        infinite
-        height="100%"
-        :fullscreen="false"
-        :swipeable="true"
-        :autoplay="500000"
-        transition-prev="slide-right"
-        transition-next="slide-left"
-        class="rounded-lg shadow-lg w-full h-full bg-gray-900"
+    <q-carousel
+      v-model="slide"
+      animated
+      infinite
+      height="100%"
+      :fullscreen="false"
+      :swipeable="true"
+      :autoplay="500000"
+      transition-prev="slide-right"
+      transition-next="slide-left"
+      class="rounded-lg shadow-lg w-full h-full bg-gray-900"
+    >
+      <q-carousel-slide
+        v-for="(image, index) in images"
+        :key="index"
+        :name="index"
+        class="h-full flex justify-center items-center bg-gray-800"
       >
-        <q-carousel-slide
-          v-for="(image, index) in images"
-          :key="index"
-          :name="index"
-          class="h-full flex justify-center items-center bg-gray-800"
+        <div
+          class="relative w-full h-full flex justify-center items-center overflow-hidden"
         >
+          <img
+            :src="image.url"
+            :alt="image.title"
+            class="min-w-full min-h-full object-cover"
+            :style="{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center'
+            }"
+          />
           <div
-            class="relative w-full h-full flex justify-center items-center overflow-hidden"
+            class="absolute bottom-0 left-0 right-0 bg-black/50 p-4 transition-opacity duration-300 h-[20%] flex flex-row justify-start items-center lg:!flex-col lg:justify-start lg:items-start"
           >
-            <img
-              :src="image.url"
-              :alt="image.title"
-              class="min-w-full min-h-full object-cover"
-              :style="{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center'
-              }"
-            />
-            <div
-              class="absolute bottom-0 left-0 right-0 bg-black/50 p-4 transition-opacity duration-300 h-[20%] flex flex-row justify-start items-center lg:!flex-col lg:justify-start lg:items-start"
-            >
-              <span class="text-white text-sm font-bold lg:text-base lg:w-full">
-                {{ image.title }}
-              </span>
-              <span class="ml-2 text-gray-300 text-xs lg:w-full">
-                {{ image.description }}
-              </span>
-            </div>
-            <!-- 添加导航按钮 -->
+            <span class="text-white text-sm font-bold lg:text-base lg:w-full">
+              {{ image.title }}
+            </span>
+            <span class="ml-2 text-gray-300 text-xs lg:w-full">
+              {{ image.description }}
+            </span>
           </div>
-        </q-carousel-slide>
-      </q-carousel>
-      <div
-        class="absolute top-1/2 left-0 right-0 flex justify-between px-2 transform -translate-y-1/2"
-      >
-        <q-btn
-          round
-          flat
-          dense
-          color="white"
-          icon="chevron_left"
-          class="nav-btn !bg-black/30"
-          @click="prevSlide"
-          size="sm"
-        />
-        <q-btn
-          round
-          flat
-          dense
-          color="white"
-          icon="chevron_right"
-          class="nav-btn !bg-black/30"
-          @click="nextSlide"
-          size="sm"
-        />
-      </div>
+          <!-- 添加导航按钮 -->
+        </div>
+      </q-carousel-slide>
+    </q-carousel>
+    <div
+      class="absolute top-1/2 left-0 right-0 flex justify-between px-2 transform -translate-y-1/2"
+    >
+      <q-btn
+        round
+        flat
+        dense
+        color="white"
+        icon="chevron_left"
+        class="nav-btn !bg-black/30"
+        @click="prevSlide"
+        size="sm"
+      />
+      <q-btn
+        round
+        flat
+        dense
+        color="white"
+        icon="chevron_right"
+        class="nav-btn !bg-black/30"
+        @click="nextSlide"
+        size="sm"
+      />
     </div>
-  </transition>
+  </div>
 </template>
 
 <script setup lang="ts">

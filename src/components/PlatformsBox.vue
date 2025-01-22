@@ -6,6 +6,7 @@
   >
     <div
       class="w-full h-[300px] bg-black/10 rounded-xl backdrop-blur-md border border-white/20 shadow-lg p-4 relative"
+      style="animation: fadeIn; animation-duration: 2s"
     >
       <template v-if="!isLoading">
         <q-carousel
