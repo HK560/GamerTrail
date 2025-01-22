@@ -10,9 +10,12 @@
       height="100%"
       :fullscreen="false"
       :swipeable="true"
+      :navigation="false"
       :autoplay="500000"
       transition-prev="slide-right"
       transition-next="slide-left"
+      :transition-duration="300"
+      :swipe-sensitivity="2"
       class="rounded-lg shadow-lg w-full h-full bg-gray-900"
     >
       <q-carousel-slide
@@ -23,11 +26,12 @@
       >
         <div
           class="relative w-full h-full flex justify-center items-center overflow-hidden"
+          @click="handleClick"
         >
           <img
             :src="image.url"
             :alt="image.title"
-            class="min-w-full min-h-full object-cover"
+            class="min-w-full min-h-full object-cover pointer-events-none"
             :style="{
               width: '100%',
               height: '100%',
@@ -36,7 +40,7 @@
             }"
           />
           <div
-            class="absolute bottom-0 left-0 right-0 bg-black/50 p-4 transition-opacity duration-300 h-[20%] flex flex-row justify-start items-center lg:!flex-col lg:justify-start lg:items-start"
+            class="absolute bottom-0 left-0 right-0 bg-black/50 p-4 transition-opacity duration-300 h-[20%] flex flex-row justify-start items-center lg:!flex-col lg:justify-start lg:items-start pointer-events-none"
           >
             <span class="text-white text-sm font-bold lg:text-base lg:w-full">
               {{ image.title }}
@@ -50,7 +54,7 @@
       </q-carousel-slide>
     </q-carousel>
     <div
-      class="absolute top-1/2 left-0 right-0 flex justify-between px-2 transform -translate-y-1/2"
+      class="absolute top-1/2 left-0 right-0 flex justify-between px-2 transform -translate-y-1/2 pointer-events-none"
     >
       <q-btn
         round
@@ -58,7 +62,7 @@
         dense
         color="white"
         icon="chevron_left"
-        class="nav-btn !bg-black/30"
+        class="nav-btn !bg-black/30 pointer-events-auto"
         @click="prevSlide"
         size="sm"
       />
@@ -68,7 +72,7 @@
         dense
         color="white"
         icon="chevron_right"
-        class="nav-btn !bg-black/30"
+        class="nav-btn !bg-black/30 pointer-events-auto"
         @click="nextSlide"
         size="sm"
       />
@@ -89,6 +93,27 @@ interface ImageData {
 
 const slide = ref(0);
 const images = ref<ImageData[]>([]);
+const clickTimer = ref<number | null>(null);
+const clickCount = ref(0);
+
+const handleClick = () => {
+  clickCount.value++;
+
+  if (clickCount.value === 1) {
+    clickTimer.value = window.setTimeout(() => {
+      clickCount.value = 0;
+      clickTimer.value = null;
+    }, 300);
+  } else if (clickCount.value === 2) {
+    clearTimeout(clickTimer.value!);
+    clickCount.value = 0;
+    clickTimer.value = null;
+    // 双击时打开图片
+    if (images.value[slide.value]) {
+      openImageInNewTab(images.value[slide.value].url);
+    }
+  }
+};
 
 const nextSlide = () => {
   if (images.value.length > 0) {
@@ -100,6 +125,10 @@ const prevSlide = () => {
   if (images.value.length > 0) {
     slide.value = slide.value === 0 ? images.value.length - 1 : slide.value - 1;
   }
+};
+
+const openImageInNewTab = (url: string) => {
+  window.open(url, "_blank");
 };
 
 onMounted(async () => {
@@ -130,5 +159,13 @@ img {
   min-height: 100%;
   width: auto;
   height: auto;
+}
+
+.q-carousel {
+  touch-action: pan-y pinch-zoom;
+}
+
+.nav-btn {
+  z-index: 2;
 }
 </style>
