@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import TitleBox from "@/components/TitleBox.vue";
 import GamerInfoBox from "@/components/GamerInfoBox.vue";
-import PicShow from "@/components/PicBox.vue";
+import GameScreenshotsBox from "@/components/GameScreenshotsBox.vue";
 import PlatformsBox from "@/components/PlatformsBox.vue";
 import GameStartsChart from "@/components/GameStartsChart.vue";
 import bgImg from "@/assets/img/Avg_avg_ac9_8.jpg";
@@ -54,7 +54,7 @@ onMounted(() => {
           <PlatformsBox v-if="showPlatforms" class="platforms" />
         </div>
         <div class="right-panel">
-          <PicShow v-if="showPicShow" class="pic-show" />
+          <GameScreenshotsBox v-if="showPicShow" class="pic-show" />
 
           <div v-if="showChart" class="chart-container">
             <div class="chart-controls">

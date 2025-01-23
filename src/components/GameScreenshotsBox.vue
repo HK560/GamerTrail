@@ -133,7 +133,7 @@ const openImageInNewTab = (url: string) => {
 
 onMounted(async () => {
   try {
-    const response = await fetch("/data/pic.json");
+    const response = await fetch("/data/gameScreenshots.json");
     const data = await response.json();
     images.value = data.images;
   } catch (error) {
