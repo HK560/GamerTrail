@@ -8,6 +8,8 @@ import "@quasar/extras/animate/fadeIn.css";
 import "@quasar/extras/animate/fadeOut.css";
 import "@quasar/extras/animate/slideInUp.css";
 import "@quasar/extras/animate/slideOutUp.css";
+import "@quasar/extras/animate/slideInDown.css";
+import "@quasar/extras/animate/slideOutDown.css";
 import { t } from "@/plugins/i18n";
 
 const pageSwitch = ref(false);
@@ -38,27 +40,34 @@ onMounted(() => {
 
 <template>
   <div class="home-box">
-    <Transition
+    <TransitionGroup
       type="animation"
-      mode="out-in"
-      enter-active-class="animate__animated animate__slideInUp"
-      leave-active-class="animate__animated animate__slideOutUp "
+      tag="div"
+      class="w-full h-full relative"
+      :enter-active-class="`animate__animated animate__${!pageSwitch ? 'slideInDown' : 'slideInUp'} animate__slower`"
+      :leave-active-class="`animate__animated   animate__${!pageSwitch ? 'slideOutDown' : 'slideOutUp'}   animate__slower`"
     >
-      <MainInfoPage
-        class="w-full h-full overflow-auto py-10"
-        v-if="pageSwitch === false"
-        :show-gamer-info="showGamerInfo"
-        :show-platforms="showPlatforms"
-        :show-pic-show="showPicShow"
-        :show-chart="showChart"
-      />
+      <div v-if="pageSwitch === false" :key="'main'" class="page-container">
+        <MainInfoPage
+          class="w-[90%] lg:w-auto"
+          :show-gamer-info="showGamerInfo"
+          :show-platforms="showPlatforms"
+          :show-pic-show="showPicShow"
+          :show-chart="showChart"
+        />
+      </div>
 
-      <GamesListPage
-        class="w-full h-full py-10 overflow-auto"
+      <div
         v-else-if="pageSwitch === true"
-        @back="handlePageSwitch(true)"
-      />
-    </Transition>
+        :key="'games'"
+        class="page-container"
+      >
+        <GamesListPage
+          class="w-[90%] lg:w-auto"
+          @back="handlePageSwitch(true)"
+        />
+      </div>
+    </TransitionGroup>
 
     <!-- 向下滑动指示器 -->
     <Transition name="fade" appear>
@@ -149,19 +158,6 @@ onMounted(() => {
 }
 
 /* 修改页面切换动画 */
-.animate__slideInUp {
-  animation-duration: 0.8s;
-}
-
-.animate__slideOutUp {
-  animation-duration: 0.8s;
-}
-
-.animate__fadeIn,
-.animate__fadeOut {
-  animation-duration: 0.8s !important;
-  animation-fill-mode: both !important;
-}
 
 @keyframes bounce {
   0%,
@@ -193,5 +189,9 @@ onMounted(() => {
   60% {
     transform: translateY(15px) translateX(-50%);
   }
+}
+
+.page-container {
+  @apply absolute top-0 left-0 w-full h-full flex justify-center overflow-auto py-10;
 }
 </style>
