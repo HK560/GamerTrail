@@ -8,6 +8,10 @@
     "jumpConfirm": "Do you want to jump to the platform page?",
     "username": "Username: "
   },
+  "scroll": {
+    "backToTop": "Back",
+    "toSeeMore": "More"
+  },
   "title": {
     "byMonth": "By Month",
     "byWeek": "By Week",

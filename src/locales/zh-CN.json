@@ -1,22 +1,26 @@
 {
   "message": {
-    "hello": "你好",
-    "copySuccess": "用户名已复制到剪贴板",
+    "cancel": "取消",
     "copyFail": "复制失败，请手动复制",
-    "username": "用户名：",
-    "jumpConfirm": "是否要跳转到该平台页面？",
+    "copySuccess": "用户名已复制到剪贴板",
+    "hello": "你好",
     "jump": "跳转",
-    "cancel": "取消"
+    "jumpConfirm": "是否要跳转到该平台页面？",
+    "username": "用户名："
+  },
+  "scroll": {
+    "backToTop": "返回",
+    "toSeeMore": "更多"
   },
   "title": {
-    "gameFinished": "已通关游戏数",
-    "mainPlatform": "主要平台",
-    "totalPlayTime": "总游玩时长",
-    "totalPlayed": "总游玩数",
-    "gameStarts": "新玩游戏统计",
-    "quantity": "数量",
-    "byWeek": "按周",
     "byMonth": "按月",
-    "byYear": "按年"
+    "byWeek": "按周",
+    "byYear": "按年",
+    "gameFinished": "已通关游戏数",
+    "gameStarts": "新玩游戏统计",
+    "mainPlatform": "主要平台",
+    "quantity": "数量",
+    "totalPlayTime": "总游玩时长",
+    "totalPlayed": "总游玩数"
   }
 }
