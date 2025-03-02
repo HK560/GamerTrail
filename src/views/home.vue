@@ -118,7 +118,7 @@ onMounted(() => {
 
 .scroll-indicator,
 .scroll-indicator-up {
-  @apply fixed left-1/2 transform -translate-x-1/2 flex flex-col items-center;
+  @apply absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center;
   z-index: 100;
 }
 

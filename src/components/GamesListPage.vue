@@ -4,7 +4,7 @@ import { t } from "@/plugins/i18n";
 </script>
 
 <template>
-  <div class="info-box !w-[80%] min-h-[100vh] overflow-hidden relative">
+  <div class="info-box !w-[80%] min-h-[90vh] overflow-hidden relative">
     <GamesListBox />
   </div>
 </template>

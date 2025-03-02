@@ -34,4 +34,13 @@ const showConfig: ListGameCardConfig = {
   @apply w-full h-full grid gap-[1.25rem] grid-flow-row  grid-cols-2  items-center justify-items-center;
   @apply lg:grid-cols-6;
 }
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+* {
+  -ms-overflow-style: none; /* IE Edge */
+  scrollbar-width: none; /* Firefox */
+}
 </style>

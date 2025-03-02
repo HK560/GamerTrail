@@ -96,12 +96,3 @@ img {
   -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard) */
   transform: scale(1);
 }
-/* 隐藏滚动条 */
-::-webkit-scrollbar {
-  display: none; /* Chrome Safari */
-}
-
-* {
-  -ms-overflow-style: none; /* IE Edge */
-  scrollbar-width: none; /* Firefox */
-}
