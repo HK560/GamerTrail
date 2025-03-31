@@ -21,19 +21,31 @@ const showConfig: ListGameCardConfig = {
         v-for="game in gameAllData"
         :key="game.id"
         transition="scale"
-        class="h-[23vh] aspect-[3/4] lg:h-[30vh] max-h-full max-w-full"
+        class="game-card-container"
         :root="boxRoot"
       >
-        <GameCard :gameData="game" :showConfig="showConfig"></GameCard>
+        <GameCard
+          :gameData="game"
+          :showConfig="showConfig"
+          class="f-card"
+        ></GameCard>
       </q-intersection>
     </div>
   </div>
 </template>
 <style lang="postcss" scoped>
 .list-box {
-  @apply w-full h-full grid gap-[1.25rem] grid-flow-row  grid-cols-2  items-center justify-items-center;
-  @apply lg:grid-cols-6;
+  @apply w-full grid gap-8 grid-flow-row grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6  items-start justify-items-center;
 }
+
+.game-card-container {
+  @apply w-full aspect-[3/4] relative;
+}
+
+.f-card {
+  @apply w-full h-full;
+}
+
 /* 隐藏滚动条 */
 ::-webkit-scrollbar {
   display: none; /* Chrome Safari */

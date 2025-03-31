@@ -18,8 +18,10 @@
     "byYear": "BY YEAR",
     "gameFinished": "Completed Games",
     "gameStarts": "Game Start Statistics",
+    "listView": "List View",
     "mainPlatform": "Main Platform",
     "quantity": "Quantity",
+    "timelineView": "Timeline View",
     "totalPlayTime": "Total Play Time",
     "totalPlayed": "Total Played"
   }

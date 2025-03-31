@@ -84,4 +84,8 @@ const chartPeriod = ref<"year" | "month">("year");
 .chart-controls {
   @apply flex justify-end absolute z-10 right-4 bottom-[-0.5rem];
 }
+
+.timeline-container {
+  @apply mt-[1.25rem];
+}
 </style>

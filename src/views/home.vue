@@ -113,7 +113,6 @@ onMounted(() => {
 <style lang="postcss" scoped>
 .home-box {
   @apply w-full h-full relative flex flex-col items-center gap-[1.25rem] justify-center overflow-hidden;
-  @apply lg:min-w-[1500px];
 }
 
 .scroll-indicator,

@@ -18,8 +18,10 @@
     "byYear": "按年",
     "gameFinished": "已通关游戏数",
     "gameStarts": "新玩游戏统计",
+    "listView": "列表视图",
     "mainPlatform": "主要平台",
     "quantity": "数量",
+    "timelineView": "时间线视图",
     "totalPlayTime": "总游玩时长",
     "totalPlayed": "总游玩数"
   }
